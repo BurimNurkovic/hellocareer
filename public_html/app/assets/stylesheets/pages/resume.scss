@@ -1,0 +1,359 @@
+.question-content {
+
+  label {
+    @include lato(400, none);
+    @include font(14, 24);
+    color: $dark-grey;
+    display: block;
+
+    @media (min-width: $break-desktop) {
+      @include font(18, 24);
+    }
+  }
+
+  .radio-question {
+    input[type=radio] {
+      margin-right: 10px;
+    }
+
+    label {
+      display: inline;
+      @include lato(400, none);
+      color: $dark-grey;
+
+      &::after {
+        content: '\A';
+        white-space:pre;
+      }
+    }
+  }
+  
+
+  input[type=text], input[type=password],
+  input[type=email], input[type=url], input[type=time],
+  input[type=date], input[type=datetime-local], input[type=tel],
+  input[type=number], input[type=search], textarea, select {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $mid-grey;
+    border-radius: 0;
+    outline: none;
+    height: 24px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    transition: all .3s;
+    resize: none;
+    font: 400 16px/24px $roboto;
+    color: $dark-grey;
+    padding: 0 20px;
+
+    &:focus {
+      outline: none;
+      border-color: $gradient-to;
+    }
+  }
+
+  ol, ul {
+    list-style: none;
+  }
+
+  .tt-menu {
+    background: $bk-white;
+    width: 100%;
+    border: 1px solid;
+    padding: 0;
+    margin: 0;
+    padding: 0 20px;
+    font: 400 16px/24px $roboto;
+  }
+
+}
+
+
+.ui-progressbar .ui-progressbar-value, .ui-widget-content {
+  height: 10px;
+
+  @media (min-width: $break-large) {
+    height: 16px;
+  }
+}
+
+.ui-widget-content {
+  height: 12px;
+
+  @media (min-width: $break-large) {
+    height: 18px;
+  }
+}
+
+#progress-bar {
+  width: 83.33333333%;
+}
+
+
+.ui-widget-header {
+  @include gradient;
+  transition: all 0.8s ease;
+}
+
+.ui-widget-content {
+  border: 1px solid #5d5d5d;
+  background: #ffffff;
+  position: relative;
+  margin: 31px 0;
+}
+
+.progress-label {
+  line-height: 20px;
+  font-weight: bold;
+  padding: 26px 0;
+  text-align: right;
+  color: $gradient-to;
+  @include raleway(700, uppercase);
+  @include font(16, 22);
+
+  @media (min-width: $break-large) {
+    @include font(21, 28);
+  }
+}
+
+// .ui-widget.ui-widget-content {
+//   border: 1px solid #c5c5c5;
+// }
+
+.question-tip {
+  position: relative;
+
+  @include clearfix;
+
+  // &.is-open {
+  //   .open__button {
+  //     background-position: -80px -120px;
+  //   }
+  // }
+
+  .open__button {
+    background-image: image-url('sprite.png');
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: right;
+    cursor: pointer;
+    position: relative;
+    background-position: -80px -100px;
+  }
+
+  .tip__text {
+    position: relative;
+    background: $bk-mid-grey;
+    border-top: 2px solid $mid-grey;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    z-index: 9999;
+    display: none;
+    transition: 0.2s transform cubic-bezier(.3,.73,.3,.74);
+
+    @include clearfix;
+
+    p {
+      margin: 0;
+      @include font(12, 20);
+      color: $dark-grey;
+    }
+
+    @media (min-width: $break-tablet) {
+      position: absolute;
+    }
+  }
+}
+
+.tip-open {
+  .open__button {
+    background-position: -80px -120px;
+  }
+
+  .tip__text {
+    display: block !important;
+  }
+}
+
+.resume-submit {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  @media (min-width: $break-tablet) {
+    position: absolute;
+  }
+
+  .link-button {
+    border-color: $dark-grey;
+    color: $mid-grey;
+    background: transparent;
+    margin: 20px 20px 20px 0;
+    float: left;
+
+    &:last-child {
+      margin: 20px 0 20px 0;
+    }
+  }
+}
+
+.ml-submit {
+  .link-button {
+    border-color: $dark-grey;
+    color: $mid-grey;
+    background: transparent;
+    margin: 20px 20px 20px 0;
+    float: left;
+  }
+}
+
+.resume-content {
+  padding-bottom: 80px;
+}
+
+.resume-prev {
+  line-height: 40px;
+  background: transparent;
+  color: $mid-grey;
+  padding: 0;
+  text-transform: uppercase;
+  border: none;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::before {
+    content: '';
+    position: relative;
+    display: block;
+    float: left;
+    width: 20px;
+    height: 40px;
+    margin-right: 10px;
+    background-image: image-url('sprite.png');
+    background-position: -60px -40px;
+  }
+}
+
+.resume-next {
+  line-height: 40px;
+  background: transparent;
+  color: $mid-grey;
+  padding: 0;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  float: right !important;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::after {
+    content: '';
+    position: relative;
+    display: block;
+    float: right;
+    width: 20px;
+    height: 40px;
+    margin-left: 10px;
+    background-image: image-url('sprite.png');
+    background-position: -80px -40px;
+  }
+}
+
+.nav-pagination nav {
+  margin: 0 auto;
+  width: auto;
+  display: table;
+  float: none;
+}
+
+.slide-pagination {
+  display: none;
+
+  @media (min-width: $break-tablet) {
+    display: block;
+  }
+}
+
+.add-fields {
+  line-height: 20px;
+  color: $mid-grey;
+  padding: 20px 0;
+  text-transform: uppercase;
+  display: table;
+  float: right;
+
+  &::before {
+    content: '';
+    position: relative;
+    display: block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-image: image-url('sprite.png');
+    background-position: -100px -40px;
+  }
+
+  &:hover, :focus {
+    color: $mid-grey;
+  }
+}
+
+.remove-fields {
+  line-height: 20px;
+  color: $mid-grey;
+  padding: 20px 0;
+  text-transform: uppercase;
+  display: block;
+  float: left;
+
+  &::before {
+    content: '';
+    position: relative;
+    display: block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-image: image-url('sprite.png');
+    background-position: -100px -60px;
+  }
+}
+
+
+.nav-category {
+  background: $bk-grey;
+
+  h3 {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    color: $gradient-from;
+    margin: 0;
+    padding: 26px 0;
+  }
+
+  @media (min-width: $break-large) {
+    h3 {
+      @include font(21, 28);
+    }
+  }
+}
+
+.question-content {
+  margin-bottom: 30px;
+  position: relative;
+  display: block;
+
+  @include clearfix;
+}

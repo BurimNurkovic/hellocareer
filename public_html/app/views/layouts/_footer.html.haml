@@ -1,0 +1,39 @@
+%footer.hc-footer.row__padding
+  .container
+    .grid-col-6.grid-col__left.footer__contact
+      %h3.header-line Contactează-ne
+      .footer__email
+        =mail_to "info@hellocareer.md", "info@hellocareer.md", :encode => "hex", :title => "Email"
+      .footer__social
+        %ul
+          %li.fb-link
+            =link_to "facebook", "https://www.facebook.com/hellocareer.md", :title => "Facebook", :target => '_blank'
+          %li.youtube-link
+            =link_to "youtube", "https://www.youtube.com/channel/UCzVeeVeZv1PV7qzGzFZ8ihg", :title => "Youtube", :target => '_blank'
+          %li.pinterest-link
+            =link_to "pinterest", "https://www.pinterest.com/hello_career/", :title => "Pinterest", :target => '_blank'
+
+    .grid-col-6.grid-col__left.footer__newsletter
+      %h3.header-line Newsletter
+      %p Află primul cele mai importante noutăți utile pentru cariera ta.
+
+      = form_for :subscription, :url => subscribe_api_email_path, :remote => true do |f|
+        .field__group
+          .grid-col-7.grid-col__left.newsletter-input
+            = f.email_field :email, :placeholder => "Email"
+          .grid-col__right.newsletter-submit
+            = f.submit "Abonează-te", :class => "link-button"
+      #subscripiton_result
+        / #response Response Will be displayed here
+    .grid-col__left.border__top.footer__content
+      .grid-col-4.grid-col__left.footer__copy
+        &copy;
+        = Time.now.year
+        Hello Career. Toate drepturile rezervate
+      .grid-col-4.grid-col__left.footer__terms
+        =link_to 'Termenii de utilizare', terms_path, target: '_blank'
+      .grid-col-4.grid-col__left.footer__made-by
+        Website by
+        = link_to 'Pixis', 'http://pixis.md'
+
+.footer__gradient

@@ -1,0 +1,11 @@
+- @mls.each do |m|
+  .grid-col-4.grid-col__left
+    .cv-preview
+      .cv-title
+        = link_to "SM id-#{m.id}", m, :class => 'header-line resume-design-modal'
+      %ul.cv-meta
+        %li
+          = m.created_at.strftime("Creat: %d/%m/%Y")
+    .cv__actions
+      = link_to 'Editează', [:edit, m], :class => 'link-button'
+      = link_to 'Șterge', m, :method => :delete, :class => 'link-button'

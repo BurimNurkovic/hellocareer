@@ -1,0 +1,43 @@
+.row
+  .col-lg-12
+    %h3.page-header Add Benefit
+
+.row
+  = form_for [:admin, @benefit] do |f|
+    .col-md-8.col-lg-9
+      .form-group
+        = f.label :title
+        = f.text_field :title, :class => "form-control"
+      .form-group
+        = f.label :body
+        = f.text_area :body, :class => "form-control"
+    .col-md-4.col-lg-3
+      .panel.panel-default
+        .panel-heading Publish
+        .panel-footer
+          .text-right
+            = f.submit :class => "btn btn-primary"
+
+.row
+  .col-lg-12
+    %h3.page-header All Benefits
+  .col-lg-12
+    .table-responsive
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th ID
+            %th Title
+            %th Body
+            %th Actions
+
+        %tbody
+          - @benefits.each do |benefit|
+            %tr
+              %td= benefit.id
+              %td= benefit.title
+              %td= benefit.body
+              %td
+                .btn-group
+                  = link_to 'Edit', [:edit, :admin, benefit], :class => "btn btn-default"
+                  = link_to 'Delete', [:admin, benefit], :method => :delete, :class => "btn btn-danger", data: { confirm: t(:are_you_sure) }

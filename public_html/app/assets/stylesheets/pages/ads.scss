@@ -1,0 +1,88 @@
+.adwrapper {
+  width: 100%;
+  border-bottom: 1px solid $dark-grey;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+
+  @media (min-width: $break-desktop) {
+    width: 75%;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.ad__meta {
+  width: 100%;
+
+  .company__id {
+    @include clearfix;
+
+    .company__img {
+      width: 30%;
+    }
+
+    .company__name {
+      @include raleway(700, uppercase);
+      @include font(14, 20);
+      color: $dark-grey;
+      margin-bottom: 15px;
+      width: 70%;
+      padding-left: 30px;
+    }
+  }
+
+  .ad__details {
+    .ad__dl {
+      @include raleway(700, uppercase);
+      @include font(14, 20);
+      margin-bottom: 15px;
+      color: $dark-grey;
+
+      @include clearfix;
+    }
+
+    .link-button {
+      border-color: $dark-grey;
+      color: $mid-grey;
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    width: 25%;
+  }
+}
+
+.ad__single {
+  @include font(14, 20);
+
+  .header-line {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    color: $dark-grey;
+
+    &::after {
+      border-color: $gradient-to;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    @include font(16, 24);
+
+    .header-line {
+      @include font(22, 28);
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    .header-line {
+      @include font(24, 30);
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .header-line {
+      @include font(28, 34);
+    }
+  }
+}

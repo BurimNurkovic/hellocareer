@@ -1,0 +1,19 @@
+.question-content
+  .grid-col-5.grid-col--left
+    .question-order--nr
+      = multiselect_question.order_nr
+    %label
+      = multiselect_question.builder_text
+  .grid-col-7.grid-col--left
+    - f = locals[:form_builder]
+    .multiselect-question{data: { multiselect: multiselect_question.special_data.to_json }}
+      = select_tag nil, options_for_select(multiselect_question.special_data.keys), :include_blank => true
+      = f.select multiselect_question.key,
+        multiselect_question.special_data.keys,
+        { include_blank: true },
+        :class => 'level-2'
+
+
+
+
+

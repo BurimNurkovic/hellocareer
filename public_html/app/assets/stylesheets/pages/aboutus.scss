@@ -1,0 +1,202 @@
+// About page
+
+.about__welcome-msg {
+  .header-line {
+    @include raleway(700, uppercase);
+    @include font(22, 28);
+    text-align: center;
+    color: $dark-grey;
+
+    &::after {
+      border-color: $gradient-to;
+      left: 50%;
+      margin: 0 0 0 -25px;
+    }
+  }
+
+  p {
+    text-align: center;
+    margin: 0;
+  }
+
+  @media (min-width: $break-tablet) {
+    .header-line {
+      @include font(32, 38);
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .header-line {
+      @include font(36, 42);
+    }
+  }
+}
+
+.about__main-desc {
+  background: $bk-grey;
+
+  .header {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    text-align: center;
+    color: $dark-grey;
+  }
+
+  p {
+    text-align: justify;
+    margin: 0 0 15px 0;
+  }
+
+  @media (min-width: $break-tablet) {
+    p {
+      margin: 0 0 20px 0;
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .header {
+      @include font(21, 28);
+    }
+  }
+}
+
+.about__team {
+  background: $white;
+  padding-bottom: 0;
+
+  .header-line {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    color: $dark-grey;
+
+    &::after {
+      border-color: $gradient-to;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    .header-line {
+      @include font(22, 28);
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    .header-line {
+      @include font(24, 30);
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .header-line {
+      @include font(28, 34);
+    }
+  }
+
+  .about__member-info {
+    text-align: center;
+    padding: 20px 0;
+    height: 140px;
+
+    h4 {
+      @include raleway(700, uppercase);
+      @include font(14, 20);
+      color: $dark-grey;
+      margin: 0 0 20px 0;
+    }
+
+    p {
+      @include font(14, 20);
+      color: $gradient-from;
+      margin: 0;
+    }
+
+    @media (min-width: $break-tablet) {
+      padding: 30px 0;
+      height: 160px;
+
+      h4 {
+        @include font(16, 20);
+      }
+
+      p {
+        @include font(16, 20);
+      }
+    }
+
+    @media (min-width: $break-desktop) {
+      height: 120px
+    }
+
+    @media (min-width: $break-large) {
+      h4 {
+        @include font(18, 20);
+      }
+    }
+  }
+}
+
+.about__info {
+  p {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    margin: 0;
+  }
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  ul {
+    margin-top: 30px;
+
+    li {
+      list-style: none;
+      padding-right: 7.5px;
+      width: 50%;
+      float: left;
+
+      &:first-child {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 15px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-right: 0;
+        padding-left: 7.5px;
+      }
+    }
+  }
+
+  @media (max-width: $break-tablet - 1) {
+    .grid-col-9, .grid-col-3 {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    ul {
+      margin-top: 0;
+
+      li {
+        margin-bottom: 30px;
+        width: 100%;
+        padding: 0;
+
+        &:first-child {
+          margin-bottom: 30px;
+        }
+
+        &:last-child {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

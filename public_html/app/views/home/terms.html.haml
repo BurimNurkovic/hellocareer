@@ -1,0 +1,9 @@
+- facebook_share_options :url => 'http://hellocareer.md/terms'
+- content_for :title, 'Termenii de utilizare | Hello Career'
+
+.hc-content
+  .terms__chapter.row__padding
+    .container
+      .content__mid
+        %h1.header-line Termenii de utilizare
+  = render :partial => 'home/terms_chapter', :collection => @terms_chapters

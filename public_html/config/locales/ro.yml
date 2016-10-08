@@ -1,0 +1,36 @@
+ro:
+  activerecord:
+    models:
+      user:
+        one: Utilizatorului
+        few: Utilizatori
+        other: Utilizatori
+    attributes:
+      user:
+        email:
+          one: Emailul
+          few: Emailuri
+          other: Emailuri
+        password:
+          one: Parola
+          few: Parole
+          other: Parole
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "este incorect!!!"
+            password:
+              blank: "nu poate fi goala!"
+
+
+  hc:
+    errors:
+      resumes_too_many: 'Too many CVs!'
+
+    notices:
+      autosave: 'Resume was autosaved!'
+
+  are_you_sure: 'Are you sure?'

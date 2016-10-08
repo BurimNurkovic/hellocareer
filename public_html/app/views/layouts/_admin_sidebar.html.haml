@@ -1,0 +1,8 @@
+%ul.nav.navbar-nav.side-nav
+  - %w( content_boxes benefits
+  -     partners testimonials
+  -     questions
+  -     resumes companies advertisements ).each do |page|
+    %li= link_to page.titleize, send("admin_#{page}_path")
+  %li= link_to 'Terms & Conditions', admin_terms_chapters_path
+  %li= link_to 'Team', admin_team_members_path

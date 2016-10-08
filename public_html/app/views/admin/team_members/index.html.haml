@@ -1,0 +1,49 @@
+.row
+  .col-lg-12
+    %h3.page-header Add Team Member
+
+.row
+  = form_for [:admin, @team_member] do |f|
+    .col-md-8.col-lg-9
+      .form-group
+        = f.label :name
+        = f.text_field :name, :class => "form-control"
+      .form-group
+        = f.label :description
+        = f.text_field :description, :class => "form-control"
+    .col-md-4.col-lg-3
+      .panel.panel-default
+        .panel-heading Picture
+        .panel-body
+          %span.btn.btn-default.btn-file
+            %span Select file
+            = f.file_field :photo
+
+      .panel.panel-default
+        .panel-heading Publish
+        .panel-footer
+          .text-right
+            = f.submit :class => "btn btn-primary"
+
+.row
+  .col-lg-12
+    %h3.page-header All Team Member
+  .col-lg-12
+    .table-responsive
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th ID
+            %th Name
+            %th Description
+            %th Actions
+        %tbody
+          - @team_members.each do |team_member|
+            %tr
+              %td= team_member.id
+              %td= team_member.name
+              %td= team_member.description
+              %td
+                .btn-group
+                  = link_to 'Edit', [:edit, :admin, team_member], :class => "btn btn-default"
+                  = link_to 'Delete', [:admin, team_member], :method => :delete, :class => "btn btn-danger", data: { confirm: t(:are_you_sure) }

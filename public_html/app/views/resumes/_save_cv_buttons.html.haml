@@ -1,0 +1,8 @@
+
+- if user_signed_in?
+  = submit_tag 'Save & preview', :class => 'link-button resume-design-modal', :remote => true
+- else
+  = link_to 'Sign In to Save', new_user_session_path(devise_remote: true), :remote => true, :class => 'link-button sign-in-btn'
+  = submit_tag 'Preview', :class => 'link-button'
+
+%input{name: 'authenticity_token', value: form_authenticity_token, type: 'hidden'}

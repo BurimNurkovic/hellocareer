@@ -1,0 +1,55 @@
+.preview__nav {
+  .link-button {
+    border-color: $mid-grey;
+    color: $dark-grey;
+    float: left;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: $gradient-from;
+      border-color: $gradient-from;
+      color: $bk-white;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 20px;
+    float: left;
+  }
+}
+
+.preview__background {
+  background: $dark-grey;
+
+  @include clearfix;
+}
+
+.preview__content {
+  @include clearfix;
+}
+
+.preview__other-cv {
+  float: right;
+}
+
+.preview__other {
+  white-space: nowrap;
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.link-button:hover {
+    border-color: $gradient-to;
+    color: $gradient-to;
+    background: transparent;
+  }
+}

@@ -1,0 +1,75 @@
+# config/application.yml
+defaults: &defaults
+  mailchimp:
+    api_key:
+    timeout: 15
+    newsletter_list_id:
+  # mandrill: 
+  #   username:
+  #   password:
+  oauth:
+    facebook:
+      app_id:
+      app_secret:
+
+    google:
+      app_id:
+      app_secret:
+
+    linkedin:
+      app_id:
+      app_secret:
+  gibbon:
+    api_key: 
+    companies: 
+    users: 
+    newsletter: 
+    timeout: 15
+
+  blog: blog.hellocareer.md
+  max_resumes_per_user: 3
+
+  resumes:
+    default:
+      name: 'Default'
+      thumb: 'default-cover-img.png'
+      description:
+      top: 15
+      right: 15
+      bottom: 15 
+      left: 15
+      header:
+        spacing: nil
+        html: 
+          partial: ''
+      footer:
+        spacing: nil
+        html:
+          partial: ''
+
+    template1:
+      name: 'Template-1'
+      thumb: 'template1-cover-img.png'
+      description:
+      top: 62
+      right: 0
+      bottom: 17
+      left: 0
+      header:
+        spacing: 12
+        html: 
+          partial: "resumes/show/header.pdf.haml"
+      footer:
+        spacing: nil
+        html:
+          partial: "resumes/show/footer.pdf.haml"
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

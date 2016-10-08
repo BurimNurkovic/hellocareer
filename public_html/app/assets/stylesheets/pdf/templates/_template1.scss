@@ -1,0 +1,307 @@
+#cv-design2 {
+  width: 210mm;
+  font-family: $ralewayRegular;
+  color: $template1Text;
+
+  h1 {
+    font-size: 8mm;
+    font-weight: 600;
+    line-height: 8mm;
+    margin-bottom: 4mm;
+    letter-spacing: 1.5mm;
+    font-family: $ralewaySemiBold;
+
+  }
+
+  h3 {
+    color: #474747;
+    font-size: 4mm;
+    font-weight: 400;
+    line-height: 5mm;
+    letter-spacing: 0.8mm;
+    font-family: $ralewayRegular;
+  }
+
+  h4 {
+    font-size: 3.5mm;
+    font-weight: 700;
+    font-family: $ralewayBold;
+    letter-spacing: 1mm;
+    line-height: 5mm;
+    margin-bottom: 4mm !important; 
+    text-transform: uppercase;
+    color: $template1Text;
+  }
+
+  h5{
+    font-size: 3.1mm;
+    line-height: 5mm;
+    font-weight: 700;
+    font-family: $ralewayBold;
+    
+    span {
+      color: $template1Text;
+      font-family: $ralewayItalic;
+      font-style: italic;
+      font-weight: 400;
+    }
+  }
+
+  h6 {
+    font-size: 3mm;
+    line-height: 4mm;
+    font-weight: 400;
+    font-family: $ralewayRegular;
+
+    span {
+      font-weight: 700;
+      font-family: $ralewayBold;
+    }
+  }
+
+  p{
+    font-size: 3mm;
+    font-weight: normal;
+    text-align: justify;
+    color: $template1Text;
+    font-family: $ralewayRegular;
+    line-height: 4mm;
+
+    span {
+      color: $template1Text;
+      font-family: $ralewayLightItalic;
+      font-style: italic;
+    }
+  }
+
+  .template-wrapper {
+    padding: 0 18mm;
+  }
+  .color-gray {
+    background-color: $template1Background;
+    margin-top: 0;
+    padding-bottom: 4mm;
+    padding-left: 18mm;
+    padding-top: 30mm;
+    margin-bottom: 12mm;
+
+    h1,
+    h3 {
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin-bottom: 4mm;
+    }
+
+    h3 {
+      margin: 0;
+    }
+
+    p {
+      color: #fff;
+    }
+  }
+
+  .col-5 {
+    width: 66%;
+    height: auto;
+    float: left;
+
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+    
+    .header-section {
+      margin-bottom: 4mm;
+    }
+  }
+
+  .col-2 {
+    width: 34%;
+    height: auto;
+    float: left;
+
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+
+    p{
+    font-size: 2.7mm;
+    line-height: 4mm;
+    }
+  }
+
+  .col-3 {
+    width: 33.3333333%;
+    height: auto;
+    float: left;
+
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .col-7   {
+    width: 66.6666667%;
+    height: auto;
+    float: left;
+
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .col-content {
+  
+    margin-bottom: 4mm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .left-column {
+    background-color: $template1Background;
+    padding: 8mm 2mm;
+
+    .col-content {
+      margin-bottom: 3mm;
+
+       &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .section-content {
+    padding-left: 5mm;
+
+    &:after {
+      border-bottom: 0.5mm solid $template1Border;
+      width: 100%;
+      padding-top: 4mm;
+    }
+
+    &:before {
+      padding-top: 4mm;
+    }
+
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+
+    &:first-child {
+
+      &:before {
+        padding-top: 0mm;
+      }
+    }
+
+    &:last-child {
+      &:after {
+        border-bottom: 0;
+        padding-top: 0;
+      }
+    }
+  }
+
+  .content-item {
+    &:after {
+      border-bottom: 0.5mm solid $template1Border;
+      width: 100%;
+      margin-top: 3mm;
+    }
+
+    &:before {
+      margin-top: 3mm;
+    }
+
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+
+    &:first-child {
+
+      &:before {
+        margin-top: 0mm;
+      }
+    }
+
+    &:last-child {
+      &:after {
+        border-bottom: 0;
+        margin-top: 0;
+      }
+    }
+  }
+
+.content-wrapper{
+    width: 100%;
+    display: table;
+    
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+  .right-padding {
+    padding-right: 4mm;
+  }
+
+    .col-content{
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  section {
+    word-wrap: break-word;
+    
+  }
+}
+.avoid{
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+.template-footer {
+  width: 100%;
+  height: 17mm;
+  background-color: $footer-color;
+}

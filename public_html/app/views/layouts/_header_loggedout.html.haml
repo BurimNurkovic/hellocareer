@@ -1,0 +1,7 @@
+
+.nav-link.nav--log-in
+  - is_remote_action = [new_resume_path, preview_resumes_path].include? request.env['PATH_INFO']
+  - url_params = { :devise_remote => is_remote_action }
+  = link_to 'Intră în cont', new_user_session_path(url_params), :remote => true, :class => 'link-button'
+.nav-link.nav--sign-up
+  = link_to 'Fă-ți cont', new_user_registration_path(url_params), :remote => true, :class => 'link-button'

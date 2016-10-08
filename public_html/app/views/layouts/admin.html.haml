@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{'content' => 'text/html', 'charset' => 'UTF-8', 'http-equiv' => 'Content-Type'}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+
+    %title HelloCareer
+    = stylesheet_link_tag    'admin', media: 'all'
+    = javascript_include_tag 'admin'
+    = csrf_meta_tags
+  %body
+    #wrapper
+      = render :partial => 'layouts/admin_navbar'
+      #page-wrapper
+        .container-fluid
+          - unless flash.blank?
+            .row
+              .col-xs-12
+                - flash.each do |type, msg|
+                  - alert_class = case
+                  - when type == 'error'; 'danger'
+                  - when type == 'notice'; 'info'
+                  - else 'success'
+                  .alert{:class => "alert-#{alert_class}"}
+                    = msg
+                    %button.close{ 'type' => 'button', 'data-dismiss' => 'alert', 'aria-label' => 'Close' }
+                      %span{ 'aria-hidden' => true } &times;
+          = yield

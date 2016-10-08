@@ -1,0 +1,10 @@
+- if user_signed_in?
+  .nav-dropdown
+    .container
+      %ul
+        %li
+          = link_to 'Contul tău', users_dashboard_path
+        %li
+          = link_to 'Setări cont', edit_user_registration_path
+        %li
+          = link_to 'Ieși din cont', destroy_user_session_path, :method => :delete

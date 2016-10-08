@@ -1,0 +1,116 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+@import 'reset';
+@import 'brand';
+@import 'default';
+
+@import 'layouts/grid';
+@import 'layouts/header';
+@import 'layouts/components';
+@import 'layouts/registration';
+@import 'layouts/date';
+@import 'custom';
+@import 'pages/home';
+@import 'pages/resume';
+@import 'pages/preview';
+@import 'pages/aboutus';
+@import 'pages/terms';
+@import 'pages/ads';
+@import 'users/glob';
+// @import 'pdf/defaultcv';
+@import 'companies/global';
+
+.resumes-cat {
+  height: 70px;
+  position: relative;
+  width: 100%;
+  padding: 25px 0;
+  display: block;
+  background: $gradient-from;
+
+  h3 {
+    margin: 0;
+    font: 700 18px/20px $raleway;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
+
+.resumes-cat--group {
+  position: relative;
+  width: 100%;
+  padding: 15px 0;
+  display: block;
+  background: $bk-dark-grey;
+
+  h3 {
+    margin: 0;
+    font: 700 18px/20px $raleway;
+    color: $dark-grey;
+    text-transform: uppercase;
+  }
+}
+
+.nested_fields {
+  border: none;
+  padding: 40px 0;
+  margin: 0;
+
+  &:nth-child(odd) {
+    background: $bk-white;
+  }
+
+  &:nth-child(even) {
+    background: $bk-grey;
+  }
+}
+
+.resumes-questions--group {
+
+  .nested_fields {
+    border: none;
+    padding: 40px 0 0 0;
+    margin: 0;
+
+    &:nth-child(odd) {
+      background: $bk-grey;
+    }
+
+    &:nth-child(even) {
+      background: $bk-white;
+    }
+  }
+}
+
+.resumes-questions {
+  padding: 40px 0;
+}
+
+.resumes-questions, .resumes-questions--group {
+
+  .question-content {
+    margin-bottom: 30px;
+    display: block;
+    position: relative;
+
+    @include clearfix;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@import 'layouts/footer.scss'

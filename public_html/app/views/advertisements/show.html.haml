@@ -1,0 +1,24 @@
+
+.hc-content
+  .container.row__padding
+    .grid-col-9.grid-col__right.col-space__both.adwrapper
+      %article.ad__single
+        %header.ad__header
+          %h1.header-line
+            = @ad.title
+        .ad__content
+          = raw @ad.body
+    .grid-col-3.grid-col__left.col-space__both.ad__meta
+      .company__id.col-space__bottom
+        .company__img.grid-col__left
+          = image_tag @ad.company.logo
+        .company__name.grid-col__left
+          = @ad.company.name
+      .ad__details
+        .ad__dl
+          %span
+            Deadline:
+            = @ad.deadline.strftime("%d %B %Y - %H:%M")
+        .ad__type
+          .link-button
+            = @ad.type

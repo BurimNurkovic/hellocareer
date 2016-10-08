@@ -1,0 +1,46 @@
+- facebook_share_options :url => 'http://hellocareer.md/about'
+- content_for :title, 'Despre Noi | Hello Career'
+
+- about_msg = @content_boxes['about_msg']
+- about1 = @content_boxes['about1']
+- about2 = @content_boxes['about2']
+- about_team = @content_boxes['about_team']
+- about_video = @content_boxes['about_video']
+- about_images = @content_boxes['about_images']
+
+.hc-content
+  .about__welcome-msg.row__padding
+    .container
+      .content__mid
+        %h2.header-line= about_msg.try(:title)
+        =raw about_msg.try(:body)
+
+  .about__main-desc.row__padding
+    .container
+      .grid-col-6.grid-col__left.col-space__right
+        %h3.header= about1.try(:title)
+        = raw about1.try(:body)
+      .grid-col-6.grid-col__left.col-space__left
+        %h3.header= about2.try(:title)
+        = raw about2.try(:body)
+
+  .about__team.row__padding
+    .container
+      .grid-col-12.grid-col__left.col-space__bottom
+        %h3.header-line= about_team.try(:title)
+        = raw about_team.try(:body)
+      - @team_members.each do |tm|
+        .grid-col-3.grid-col__left.col-space__both
+          = image_tag tm.photo
+          .about__member-info
+            %h4= tm.name
+            %p= tm.description
+
+  .about__info.row__padding
+    .container
+      .grid-col-9.grid-col__left.col-space__both
+        =raw about_video.try(:body)
+      .grid-col-3.grid-col__left.col-space__both
+        =raw about_images.try(:body)
+
+

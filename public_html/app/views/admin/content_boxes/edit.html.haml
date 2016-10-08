@@ -1,0 +1,36 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      Editing Content Box
+      = @box.id
+
+.row
+  = form_for [:admin, @box] do |f|
+
+    .col-md-8.col-lg-9
+      .form-group
+        = f.label :title
+        = f.text_field :title, :class => "form-control"
+      .form-group
+        = f.label :body
+        = f.cktext_area :body, :class => "form-control"
+    .col-md-4.col-lg-3
+      .panel.panel-default
+        .panel-heading Image
+        .panel-body
+          .thumbnail
+            = image_tag @box.image
+          %span.btn.btn-default.btn-file
+            %span Select file
+            = f.file_field :image
+
+      .panel.panel-default
+        .panel-heading Publish
+        .panel-body
+          .form-group
+            = f.label :key
+            = f.text_field :key, :class => "form-control"
+          // Updated at
+        .panel-footer
+          .text-right
+            = f.submit :class => "btn btn-primary"

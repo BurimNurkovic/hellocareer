@@ -1,0 +1,55 @@
+
+.row
+  .col-xs-12
+    - Question::CATEGORIES.each do |question_category, pretty_category|
+      - questions = @questions[question_category]
+      - heading_id = "heading#{question_category}"
+      - collapse_id = "collapse#{question_category}"
+      .panel.panel-default
+        .panel-heading{'id' => heading_id, 'role' => 'tab'}
+          %h4.panel-title
+            %a{ 'data-toggle' => "collapse",
+                'data-parent' => "#accordion",
+                'href' => "##{collapse_id}",
+                'aria-expanded' => "true",
+                'aria-controls' => collapse_id }
+              = pretty_category
+
+        .panel-collapse.collapse{ 'id' => collapse_id, 'aria-labelledby' => heading_id, 'role' => "tabpanel" }
+          = form_tag [:update_order, :admin, :questions] do
+            .panel-body
+              %table.table.table-striped
+                %thead
+                  %tr
+                    %th.col-xs-1 Ord
+                    %th Key
+                    %th Type
+                    %th Builder Text
+                    %th Actions
+                - unless questions.blank?
+                  %tbody
+                    - questions.each do |question|
+                      = fields_for 'questions[]', question do |f|
+                        %tr
+                          %td.form-group= f.number_field :order_nr, :class => 'form-control input-sm'
+                          %td= question.key
+                          %td= question.type
+                          %td= question.builder_text
+                          %td
+                            = link_to 'Edit', edit_admin_question_path(question), :class => 'btn btn-primary btn-xs'
+                            / = link_to 'Delete', admin_question_path(question), :method => :delete, :class => 'btn btn-danger btn-xs', data: { confirm: t(:are_you_sure) }
+            .panel-footer
+              - unless questions.blank?
+                = submit_tag 'Save Changes', :class => 'btn btn-primary btn-sm'
+              / = link_to 'New Question', new_admin_question_path(:category => question_category), :class => 'btn btn-primary btn-sm'
+
+/
+/         .panel.panel-default
+/           .panel-heading{'id' => heading_id, 'role' => 'tab'}
+/ question_type
+/           .panel-collapse.collapse{ 'id' => collapse_id, 'aria-labelledby' => heading_id, 'role' => "tabpanel" }
+/             .panel-body
+/               - q_type = "Question::#{question_type}"
+/               = render :partial => 'admin/questions/forms',
+/                        :locals => { :q_type => q_type,
+/                                     :questions => @questions[q_type] }

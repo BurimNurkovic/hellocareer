@@ -1,0 +1,11 @@
+.question-content
+  .grid-col-5.grid-col__left.col-space__right
+    = f.label ml_id do
+      = ml_label
+    .question-tip
+      .open__button
+      .tip__text
+        %p
+          = ml_tip
+  .grid-col-7.grid-col__left
+    = f.text_area ml_id

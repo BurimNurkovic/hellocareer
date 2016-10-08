@@ -1,0 +1,16 @@
+.resumes-questions
+  .container
+    = form_for @ml do |f|
+      = render :partial => 'ml_question', :locals => {f: f, ml_id: :about, ml_label: 'Spune pe scurt despre tine: cine ești, cum ai auzit despre jobul la care aplici?', ml_tip: 'Textul trebuie să fie adresat companiei, fii atent la formulări. Menționează numaidecât poziția pe care ești acum sau facultatea pe care o faci și din ce canale ai auzit despre acest job'}
+
+      = render :partial => 'ml_question', :locals => {f: f, ml_id: :why_position, ml_label: 'De ce aplici pentru acest job? De ce ești interesat(ă) de acest job?', ml_tip: 'Care este motivația ta personală și care este contextul în care tu aplici anume pentru acest job'}
+
+      = render :partial => 'ml_question', :locals => {f: f, ml_id: :why_company, ml_label: 'De ce ai ales să aplici în această companie?', ml_tip: 'Înainte de a aplica la un job, trebuie să studiezi compania la care aplici, scrie aici de ce ai ales să aplici anume la această companie'}
+
+      = render :partial => 'ml_question', :locals => {f: f, ml_id: :offer, ml_label: 'Ce poți oferi companiei pentru care aplici?', ml_tip: 'Fă o sumarizare narativă a competențelor și abilităților tale aplicate în companie.'}
+
+      = render :partial => 'ml_question', :locals => {f: f, ml_id: :benefit, ml_label: 'Cum se va schimba spre bine compania dacă vei fi acceptat pe această poziție?', ml_tip: 'Scrie despre impactul profesional pozitiv pe care îl vei aduce de pe poziția spre care tinzi. Evaluează cum aptitudinile tale contribuie la dezvoltarea companiei.'}
+
+      = render :partial => 'ml_question', :locals => {f: f, ml_id: :request, ml_label: 'Ce vrei să ceri acum de la compania la care aplici?', ml_tip: 'Pentru final specifică pentru ce scrii această scrisoare de intenție: pentru a fi acceptat la un stagiu de practică, pentru a fi invitat la interviu, pentru a obține o bursă'}
+      .ml-submit.grid-col-9.grid-col__left
+        = f.submit 'Salvează', :class => 'link-button'

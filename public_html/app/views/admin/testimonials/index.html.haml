@@ -1,0 +1,51 @@
+.row
+  .col-lg-12
+    %h3.page-header Add Testimonial
+
+.row
+  = form_for [:admin, @testimonial] do |f|
+    .col-md-8.col-lg-9
+      .form-group
+        = f.label :author
+        = f.text_field :author, :class => "form-control"
+      .form-group
+        = f.label :text
+        = f.cktext_area :text, :class => "form-control"
+    .col-md-4.col-lg-3
+      .panel.panel-default
+        .panel-heading Picture
+        .panel-body
+          %span.btn.btn-default.btn-file
+            %span Select file
+            = f.file_field :picture
+
+      .panel.panel-default
+        .panel-heading Publish
+        .panel-footer
+          .text-right
+            = f.submit :class => "btn btn-primary"
+
+.row
+  .col-lg-12
+    %h3.page-header All Content Boxes
+  .col-lg-12
+    .table-responsive
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th ID
+            %th Author
+            %th Text
+            %th Picture
+            %th Actions
+        %tbody
+          - @testimonials.each do |testimonial|
+            %tr
+              %td= testimonial.id
+              %td= testimonial.author
+              %td= raw testimonial.text
+              %td= image_tag testimonial.picture, :width => "100"
+              %td
+                .btn-group
+                  = link_to 'Edit', [:edit, :admin, testimonial], :class => "btn btn-default"
+                  = link_to 'Delete', [:admin, testimonial], :method => :delete, :class => "btn btn-danger", data: { confirm: t(:are_you_sure) }

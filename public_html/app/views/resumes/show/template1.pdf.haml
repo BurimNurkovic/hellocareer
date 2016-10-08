@@ -1,0 +1,369 @@
+#cv-design2
+  %page.main-format
+    .template-wrapper
+      .col-3
+        .left-column
+          .content-item
+            - unless @resume.try(:short_description).try(:about_email_key).blank?
+              .col-content
+                %h5
+                  EMAIL
+                %p
+                  = @resume.try(:short_description).try(:about_email_key)
+
+            - unless @resume.try(:short_description).try(:about_blog_key).blank?
+              .col-content
+                %h5
+                  WEBSITE
+                %p
+                  = @resume.try(:short_description).try(:about_blog_key)
+
+            - unless @resume.try(:short_description).try(:about_tel_key).blank?
+              .col-content
+                %h5
+                  TELEFON
+                %p
+                  = @resume.try(:short_description).try(:about_tel_key)
+
+            - unless @resume.try(:short_description).try(:about_live_key).blank?
+              .col-content
+                %h5
+                  ADRESA
+                %p
+                  = @resume.try(:short_description).try(:about_live_key)
+
+          - unless @resume.professional_competences.blank?
+            .content-item
+              %h4 Competențe profesionale
+              - @resume.professional_competences.each do |answer_set|
+                .col-13
+                  %h5
+                    = answer_set.cprof_position_key
+                .col-content
+                  %p
+                    = answer_set.cprof_proj_key
+
+          - unless @resume.personal_efficiencies.blank?
+            .content-item
+              %h4 Competențe personale
+              - @resume.personal_efficiencies.each do |answer_set|
+                .col-content
+                  %h5
+                    = answer_set.epers_help_key
+                  %p
+                    = answer_set.epers_proj_key
+          - unless @resume.language_competences.blank?
+            .content-item
+              %h4 Competențe lingvistice
+              - @resume.language_competences.each do |answer_set|
+                .col-content
+                  %h5
+                    #{answer_set.lang_name_key}:
+                  
+                  %h6
+                    = answer_set.lang_level_key
+
+          - unless @resume.competitions.blank?
+            .content-item
+              %h4 Concursuri
+              - @resume.competitions.each do |answer_set|
+                .col-content
+                  %h5
+                    = answer_set.conc_win_key
+                  
+                  %h6
+                    = answer_set.conc_name_key
+                  %h6
+                    #{answer_set.conc_type_key},
+                  %p
+                    %span.lowercase
+                      - unless answer_set.conc_time_key.blank?
+                        = l(answer_set.conc_time_key, format: "%B %Y")
+
+          - unless @resume.qualifications.blank?
+            .content-item
+              %h4 Calificări
+              - @resume.qualifications.each do |answer_set|
+                .col-content
+                  %h6
+                    = answer_set.cal_position_key
+                  %p
+                    
+
+                  %p
+                    %span
+                      #{answer_set.cal_inst_key},
+                      - unless answer_set.cal_date_key.blank?
+                        = answer_set.cal_date_key.strftime("%Y")
+
+          - unless @resume.hobbies.blank?
+            .content-item
+              %h4 Hobby
+              - @resume.hobbies.each do |answer_set|
+                .col-content
+                  %p
+                    = answer_set.hobby_work_key
+      .col-7
+        - unless @resume.try(:short_description).try(:about_summary_key).blank?
+          .section-content
+            %h4 Despre mine
+            %p
+              = @resume.try(:short_description).try(:about_summary_key)
+        - unless @resume.jobs.blank?
+          .section-content
+            %section
+              %h4 Experiența de lucru
+              - @resume.jobs.each do |answer_set|
+                .col-content
+                  .col-2
+                    .right-padding
+                      %p
+                        - unless answer_set.job_start_key.blank?
+                          = answer_set.job_start_key.strftime("%d/%m/%Y")
+                        %span -
+                        - if answer_set.job_finish_key.blank?
+                          Prezent
+                        - else
+                          = answer_set.job_finish_key.strftime("%d/%m/%Y")
+                      %p
+                        - unless answer_set.job_time_key.blank?
+                          = answer_set.job_time_key
+                  .col-5
+                    %h5
+                      = answer_set.job_post_key
+                    %h5.header-section
+                      #{answer_set.job_domain_key},
+                      %span
+                        #{answer_set.job_cpy_key},
+                        
+                        = answer_set.job_cpy_loc_key
+                    %p
+                      %span
+                        Activități de bază:
+                      = answer_set.job_respon_key
+                    %p
+                      %span
+                        Realizări:
+                      = answer_set.job_realiz_key
+
+        - unless @resume.internships.blank?
+          .section-content
+            %section
+              %h4 Stagii
+              - @resume.internships.each do |answer_set|
+                .col-content
+                  .col-2
+                    .right-padding
+                      %p
+                        - unless answer_set.start_start_key.blank?
+                          = answer_set.start_start_key.strftime("%d/%m/%Y")
+                        %span -
+                        - if answer_set.stag_finish_key.blank?
+                          Prezent
+                        - else
+                          = answer_set.stag_finish_key.strftime("%d/%m/%Y")
+                      %p
+                        - unless answer_set.stag_time_key.blank?
+                          = answer_set.stag_time_key
+                  .col-5
+                    .header-section
+                      %h5
+                        #{answer_set.stag_position_key},
+                      %h5
+                        %span
+                          #{answer_set.stag_cpy_key},
+                          = answer_set.stag_cpy_loc_key
+                    %p
+                      %span
+                        Activități de bază:
+                      = answer_set.stag_activ_key
+                    %p
+                      %span
+                        Realizări:
+                      = answer_set.stag_aport_key
+
+        - unless @resume.volunteerings.blank?
+          .section-content
+            %section
+              %h4 
+                Voluntariat
+              - @resume.volunteerings.each do |answer_set|
+                .col-content
+                  .col-2
+                    .right-padding
+                      %p
+                        - unless answer_set.volunt_start_key.blank?
+                          = answer_set.volunt_start_key.strftime("%d/%m/%Y")
+                        %span -
+                        - if answer_set.volunt_finish_key.blank?
+                          Prezent
+                        - else
+                          = answer_set.volunt_finish_key.strftime("%d/%m/%Y")
+                      %p
+                        - unless answer_set.volunt_time_key.blank?
+                          = answer_set.volunt_time_key
+                  .col-5
+                    %h5.header-section
+                      - if answer_set.volunt_role_key == 'Organizator'
+                        #{answer_set.volunt_org_key},
+                      - else
+                        #{answer_set.volunt_role_key},
+                      %span
+                        = answer_set.volunt_name_key
+                    %p
+                      %span
+                        Activități de bază:
+                      = answer_set.volunt_resp_key
+                    %p
+                      %span
+                        Realizări:
+                      = answer_set.volunt_realiz_key
+
+        - unless @resume.doctorates.blank? && @resume.masters.blank? && @resume.bachelors.blank? && @resume.colleges.blank? && @resume.professional_schools.blank?
+          .section-content
+            %section
+              %h4 Educație
+              - unless @resume.doctorates.blank?
+                - @resume.doctorates.each do |answer_set|
+                  .col-content
+                    .col-2
+                      .right-padding
+                        %p
+                          - unless answer_set.doct_start_key.blank?
+                            = answer_set.doct_start_key.strftime("%d/%m/%Y")
+                          %span -
+                          - if answer_set.doct_finish_key.blank?
+                            Prezent
+                          - else
+                            = answer_set.doct_finish_key.strftime("%d/%m/%Y")
+                    .col-5
+                      %h6 
+                        Doctorat
+                        %span
+                          = answer_set.doct_spec_key
+
+                      %p
+                        %span
+                          = answer_set.doct_univer_key
+                      %p
+                        = answer_set.doct_loc_key
+
+
+              - unless @resume.masters.blank?
+                - @resume.masters.each do |answer_set|
+                  .col-content
+                    .col-2
+                      .right-padding
+                        %p
+                          - unless answer_set.master_start_key.blank?
+                            = answer_set.master_start_key.strftime("%d/%m/%Y")
+                          %span -
+                          - if answer_set.master_finish_key.blank?
+                            Prezent
+                          - else
+                            = answer_set.master_finish_key.strftime("%d/%m/%Y")
+                    .col-5
+                      %h6 
+                        Masterat
+                        %span
+                          = answer_set.master_spec_key
+                      %p
+                        %span
+                          = answer_set.master_univer_key
+                      %p
+                        = answer_set.master_loc_key
+
+              - unless @resume.bachelors.blank?
+                - @resume.bachelors.each do |answer_set|
+                  .col-content
+                    .col-2
+                      .right-padding
+                        %p
+                          - unless answer_set.bach_start_key.blank?
+                            = answer_set.bach_start_key.strftime("%d/%m/%Y")
+                          %span -
+                          - if answer_set.bach_finish_key.blank?
+                            Prezent
+                          - else
+                            = answer_set.bach_finish_key.strftime("%d/%m/%Y")
+                    .col-5
+                      %h6 
+                        Facultatea
+                        %span
+                          = answer_set.bach_spec_key
+                      %p
+                        %span
+                          = answer_set.bach_univer_key
+                      %p
+                        = answer_set.bach_loc_key
+
+              - unless @resume.colleges.blank?
+                - @resume.colleges.each do |answer_set|
+                  .col-content
+                    .col-2
+                      .right-padding
+                        %p
+                          - unless answer_set.coleg_start_key.blank?
+                            = answer_set.coleg_start_key.strftime("%d/%m/%Y")
+                          %span -
+                          - if answer_set.coleg_finish_key.blank?
+                            Prezent
+                          - else
+                            = answer_set.coleg_finish_key.strftime("%d/%m/%Y")
+                    .col-5
+                      %h6 
+                        Colegiu
+                        %span
+                          = answer_set.coleg_spec_key
+                      %p
+                        %span
+                          = answer_set.coleg_name_key
+                      %p
+                        = answer_set.coleg_loc_key
+
+              - unless @resume.professional_schools.blank?
+                - @resume.professional_schools.each do |answer_set|
+                  .col-content
+                    .col-2
+                      .right-padding
+                        %p
+                          - unless answer_set.pschool_start_key.blank?
+                            = answer_set.pschool_start_key.strftime("%d/%m/%Y")
+                          %span -
+                          - if answer_set.pschool_finish_key.blank?
+                            Prezent
+                          - else
+                            = answer_set.pschool_finish_key.strftime("%d/%m/%Y")
+                    .col-5
+                      %h6 
+                        Școala Profesională
+                        %span
+                          = answer_set.pschool_spec_key
+                      %p
+                        %span
+                          = answer_set.pschool_name_key
+                      %p
+                        = answer_set.pschool_loc_key
+
+
+
+        - unless @resume.courses.blank?
+          .section-content
+            %section
+              %h4 Cursuri și programe de training
+              - @resume.courses.each do |answer_set|
+                .col-content
+                  .col-2
+                    .right-padding
+                      %p
+                        - unless answer_set.course_when_key.blank?
+                          = answer_set.course_when_key.strftime("%d/%m/%Y")
+                      %p
+                        = answer_set.course_time_key
+                  .col-5
+                    %h5
+                      = answer_set.course_help_key
+                    %p
+                      %span
+                        = answer_set.course_inst_key
+

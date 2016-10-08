@@ -1,0 +1,32 @@
+.row
+  .col-lg-12
+    %h3.page-header All Advertisments
+
+.row
+  .col-lg-12
+    .form-group
+      = link_to 'New Advertisement', new_companies_advertisement_path, :class => 'btn btn-primary'
+    .table-responsive
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th Title
+            %th Type
+            %th Domain
+            %th Visible
+            %th Deadline
+            %th Views
+            %th Actions
+        %tbody
+          = content_tag_for(:tr, @ads) do |ad|
+            %td= ad.title
+            %td= ad.type
+            %td= ad.domain
+            %td= ad.visible?
+            %td= ad.deadline
+            %td= ad.views
+            %td
+              = link_to 'View', [:companies, ad], :class => 'btn btn-success btn-xs'
+              = link_to 'Edit', [:edit, :companies, ad], :class => 'btn btn-primary btn-xs'
+              = link_to 'Delete', [:companies, ad], :class => 'btn btn-danger btn-xs', :method => :delete
+

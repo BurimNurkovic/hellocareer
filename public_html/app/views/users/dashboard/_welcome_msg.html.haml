@@ -1,0 +1,11 @@
+.dashboard--welcome-msg
+  .container
+    .content__mid
+      %h3.header-line
+        = current_user.full_name? ? "Salut, #{current_user.full_name}!" : 'Salut!'
+
+      %p
+        Aceasta este pagina ta personală de Hello Career. Odată cu ea încep și primii tăi pași spre cariera dorită. Nu vrem să te ținem mult de vorbă și de aceea te lăsăm în pace ca să începi chiar acum să-ți completezi CV-ul. Baftă!
+
+      = link_to 'Creează CV', new_resume_path, :class => "link-button"
+      /= link_to 'Creează ML', new_motivational_letter_path, :class => "link-button"

@@ -1,0 +1,13 @@
+
+.row
+  .col-xs-12
+    - @company.last_searches.each do |t, q|
+      = t
+      %br
+      - q.each do |text, value|
+        %strong
+          = text
+        = value
+        %br
+      %br
+

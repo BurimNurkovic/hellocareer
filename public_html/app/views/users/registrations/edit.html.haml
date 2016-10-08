@@ -1,0 +1,75 @@
+- facebook_share_options :url => 'http://hellocareer.md/users/edit'
+- content_for :title, 'Setări cont | Hello Career'
+
+
+.hc-content
+  .user-edit.row__padding
+    .container
+      .content__mid
+        %h1.header-line Setări cont
+
+  .user-edit.row__padding
+    .container
+      .content__mid
+        %h3.header Despre tine
+        .grid-col-12.grid-col__left
+          = form_for(resource, as: resource_name, url: users_profile_path, html: { method: :put }) do |f|
+            .field__group
+              .grid-col-5.grid-col__left
+                = f.label :full_name, 'Numele tău deplin'
+              .grid-col-7.grid-col__left
+                = f.text_field :full_name
+            .field__group
+              .grid-col-5.grid-col__left
+                = f.label :avatar, 'Poza de profil'
+              .grid-col-7.grid-col__left
+                = image_tag resource.avatar if resource.avatar.present?
+
+                = f.file_field :avatar, :class => "link-button-file"
+
+                %br
+                = f.label :remove_avatar do
+                  = f.check_box :remove_avatar
+                  Elimină imaginea
+            = f.submit "Actualizează", :class => "link-button"
+
+
+  .user-edit.row__padding
+    .container
+      .content__mid
+        %h3.header Configurarea contului
+        .grid-col-12.grid-col__left
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+            = devise_error_messages!
+            .field__group
+              .grid-col-5.grid-col__left
+                = f.label :email, 'Email'
+              .grid-col-7.grid-col__left
+                = f.email_field :email
+                - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                  %div
+                    Currently waiting confirmation for: #{resource.unconfirmed_email}
+            .field__group
+              .grid-col-5.grid-col__left
+                = f.label :password, 'Parola nouă'
+              .grid-col-7.grid-col__left
+                = f.password_field :password, autocomplete: "off"
+            .field__group
+              .grid-col-5.grid-col__left
+                = f.label :password_confirmation, 'Reintrodu parola'
+              .grid-col-7.grid-col__left
+                = f.password_field :password_confirmation, autocomplete: "off"
+            .field__group
+              .grid-col-5.grid-col__left
+                = f.label :current_password, 'Parola actuală'
+              .grid-col-7.grid-col__left
+                = f.password_field :current_password, autocomplete: "off", :placeholder => "pentru orice modificări introdu parola actuală"
+            = f.submit "Actualizează", :class => "link-button"
+
+  .user-edit.row__padding
+    .container
+      .content__mid
+        %h3.header Anularea Contului
+        .grid-col-12.grid-col__left
+          %p Hey, să știi că poți să-ți anulezi contul oricând. Odată șters însă, acesta nu mai poate fi restabilit.
+        = link_to "Șterge cont", registration_path(resource_name), :class => "link-button button--delete", method: :delete, remote: true

@@ -1,0 +1,19 @@
+
+
+- Question::SINGULAR_CATEGORIES.each do |cat_key, cat_name|
+  %h3= cat_name
+  - if @questions[cat_key]
+    - @questions[cat_key].each do |q|
+      %label= q.template_text
+      %p= @resume.public_send(cat_key)[q.key]
+      %hr
+
+
+- Question::PLURAL_CATEGORIES.each do |cat_key, cat_name|
+  %h3= cat_name
+  - @resume.public_send(cat_key.pluralize).each do |answer_set|
+    - if @questions[cat_key]
+      - @questions[cat_key].each do |q|
+        %label= q.template_text
+        %p= answer_set[q.key]
+        %hr

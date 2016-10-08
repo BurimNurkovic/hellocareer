@@ -1,0 +1,35 @@
+
+.row
+  .col-xs-12
+    = form_for [:admin, @company] do |f|
+      .form-group
+        = f.label 'Email:'
+        = f.email_field :email, :class => 'form-control'
+      .form-group
+        = f.submit 'Add company', :class => 'btn btn-primary'
+
+.row
+  .col-xs-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th ID
+          %th Email
+          %th Confirmed
+          %th Active
+          %th Expires At
+          %th Actions
+
+      %tbody
+        = content_tag_for('tr', @companies) do |c|
+          %td= c.id
+          %td= c.email
+          %td= c.confirmed?
+          %td= c.subscription.active?
+          %td= c.subscription.expires_at
+          %td
+            = link_to 'View', [:admin, c], :class => 'btn btn-xs btn-primary'
+            = link_to 'Subscription', [:admin, c, :subscription], :class => 'btn btn-xs btn-success'
+            = link_to 'Delete', [:admin, c], :method => 'delete', data: { confirm: t(:are_you_sure) },
+                      :class => 'btn btn-xs btn-danger'
+

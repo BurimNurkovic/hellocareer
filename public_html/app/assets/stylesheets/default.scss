@@ -1,0 +1,171 @@
+@mixin clearfix {
+  &::before, &::after {
+    display: table;
+    content: '';
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+a {
+  color: $gradient-from;
+
+  &:hover, &:focus {
+    color: $gradient-to;
+    opacity: 0.8;
+  }
+}
+
+p {
+  @include lato(400, none);
+  @include font(14, 20);
+  color: $dark-grey;
+}
+
+@media (min-width: $break-tablet) {
+  p {
+    @include font(16, 24);
+  }
+}
+
+input, button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.hc-content {
+  padding-top: 80px;
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.link-button {
+  position: relative;
+  display: inline-block;
+  @include raleway-18;
+  padding: 8px 30px;
+  border: 2px solid;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    -webkit-transform: translateY(0, 1px);
+    -moz-transform: translateY(0, 1px);
+    -ms-transform: translateY(0, 1px);
+    -o-transform: translateY(0, 1px);
+    transform: translateY(0, 1px);
+    outline: none;
+  }
+}
+
+.link-button-file {
+  font: 400 16px/20px "Roboto", sans-serif;
+  color: $dark-grey;
+
+  &::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  &::before {
+    content: 'Alege fișierul';
+    display: inline-block;
+    background: transparent;
+    border-radius: none;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: none;
+    font: 400 14px/14px "Raleway", sans-serif;
+    padding: 6px 6px;
+    border: 2px solid $mid-grey;
+    color: $dark-grey;
+  }
+  &:hover::before {
+    border-color: $mid-grey;
+  }
+  &::before {
+    background: transparent;
+  }
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.header-line {
+  margin: 0 0 20px 0;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 50px;
+    border-bottom: 2px solid #fff;
+    display: block;
+    left: 0;
+    padding-top: 20px;
+    position: relative;
+  }
+}
+
+.header {
+  margin: 0 0 20px 0;
+  position: relative;
+}
+
+@media (min-width: $break-tablet) {
+  .header-line {
+    margin: 0 0 30px 0;
+  }
+
+  .header {
+    margin: 0 0 30px 0;
+  }
+}
+
+.border__bottom {
+  border-bottom: 2px solid lighten($dark-grey, 20%);
+}
+
+.border__top {
+  border-top: 2px solid lighten($dark-grey, 20%);
+}
+
+.field__group {
+  width: 100%;
+  display: block;
+  position: relative;
+  margin: 0 0 20px 0;
+
+  @include clearfix;
+
+  label {
+    @include roboto-p;
+    color: $dark-grey;
+    margin: 0;
+    display: block;
+    padding: 8px 0;
+  }
+
+  input:not([type=submit]):not([type=file]):not([type=checkbox]) {
+    width: 100%;
+    height: 40px;
+    padding: 8px 20px;
+    background-color: #fff;
+    background-image: none;
+    border: 2px solid $mid-grey;
+    border-radius: 0;
+    @include placeholder-font;
+
+    &:focus {
+      outline: 0;
+      border-color: lighten( $mid-grey, 20% );
+    }
+  }
+}

@@ -1,0 +1,48 @@
+= form_for @company.subscription, url: admin_company_subscription_path(@company) do |f|
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            Searchable Fields
+        .panel-body
+          .form-group
+            = f.collection_check_boxes :searchable_fields, @searchable_qkeys, :key, :builder_text do |b|
+              .checkbox
+                = b.label do
+                  = b.check_box + b.text
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            Visible Fields
+        .panel-body
+          .form-group
+            = f.collection_check_boxes :visible_fields, @all_qkeys, :key, :repr do |b|
+              .checkbox
+                = b.label do
+                  = b.check_box + b.text
+
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title
+            Options
+        .panel-body
+          .form-group
+            = f.label :search_limit
+            = f.number_field :search_limit, :class => 'form-control'
+          .form-group
+            = f.label :premium_points
+            = f.number_field :premium_points, :class => 'form-control'
+          .form-group
+            = f.label :active
+            = f.check_box :active
+          .form-group.date-field
+            = f.label :expires_at
+            = f.text_field :expires_at, :value => @company.subscription.expiration_date, :class => 'form-control'
+      .form-group
+        = f.submit 'Update subscription', :class => 'btn btn-primary'
+

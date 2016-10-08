@@ -1,0 +1,7 @@
+- q = autocomplete_question
+.row.form-group
+  .col-xs-5
+    %label
+      = q.builder_text
+  .col-xs-7.autocomplete-question{:data => {:qid => q.id, :revision => q.updated_at.to_i}}
+    = locals[:form_builder].text_field q.key, :class => 'form-control'

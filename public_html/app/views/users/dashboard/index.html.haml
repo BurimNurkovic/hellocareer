@@ -1,0 +1,85 @@
+- facebook_share_options :url => 'http://hellocareer.md/users/dashboard'
+- content_for :title, 'Contul tău | Hello Career'
+
+#show-modal
+.hc-content
+  .dashboard-msg.row__padding
+    .container
+      .content__mid
+        %h3.header-line
+          = current_user.full_name? ? "Salut, #{current_user.full_name}!" : 'Salut!'
+
+        %p
+          Aceasta este pagina ta personală de Hello Career. Odată cu ea încep și primii tăi pași spre cariera dorită. Nu vrem să te ținem mult de vorbă și de aceea te lăsăm în pace ca să începi chiar acum să-ți completezi CV-ul. Baftă!
+
+        = link_to 'Creează CV', new_resume_path, :class => "link-button"
+
+  .dashboard-tools.row__padding
+    .container
+      .grid-row
+        .grid-col-4.grid-col__left.col-text_center.content-tool#resume-tool
+          = render :partial => 'tool_box', :locals => {tool_counter: @resumes.size, tool_name: 'CV-uri create'}
+        .grid-col-4.grid-col__left.col-text_center.content-tool#ml-tool
+          = render :partial => 'tool_box', :locals => {tool_counter: @mls.count, tool_name: 'Scrisori de motivare'}
+        .grid-col-4.grid-col__left.col-text_center.content-tool#resume-tool
+          - views = @resumes.size == 0 ? {none: 0} : current_user.views
+          = render :partial => 'tool_box', :locals => {tool_counter: views.values.reduce(:+), tool_name: 'Total vizualizări'}
+
+  .dashboard-content.row__padding
+    .container
+      .grid-row
+        .resume-tool.content-box
+          - case @resumes.size
+            - when 0
+              .content__mid
+                .cv-empty
+                  %h3
+                    Nu ai nici un CV creat
+                  %p
+                    Îndreaptă acest lucru chiar acum. Formularul și sugestiile de completare te așteaptă nerăbdătoare. Tot ce te mai desparte de ele e doar un click pe butonul ce urmează.
+                  = link_to 'Începe primul tău CV', new_resume_path, :class => "link-button"
+            - when Settings.max_resumes_per_user
+              = render :partial => 'resume_meta', :locals => {views: views}
+            - else
+              = render :partial => 'resume_meta', :locals => {views: views}
+              = link_to 'Începe un nou CV', new_resume_path, :class => "link-button"
+        .ml-tool.content-box
+          - case @mls.size
+            - when 0
+              .content__mid
+                .cv-empty
+                  %h3
+                    Nu ai nici o scrisoare de motivare
+                  %p
+                    Hello Career ți-a pregătit un model după care să te orientezi, însă doar tu și cuvintele tale sincere puteți spune cât de mult îți dorești jobul pentru care aplici. Așa că nu mai ezita.
+                  = link_to 'Începe scrisoarea acum', new_motivational_letter_path, :class => "link-button"
+            - else
+              = render :partial => 'mls_meta'
+              = link_to 'Începe scrisoarea acum', new_motivational_letter_path, :class => "link-button"
+
+  - unless @ads.empty?
+    .dashboard-ads.row__padding
+      .container
+        .grid-col-12.grid-col__left.col-space__bottom
+          %h3.header-line
+            Sugestii personalizate pentru tine
+          %p
+            Găsește aici cele mai importante oferte de job-uri și stagii ale lunii. Toate personalizate sub necesitățile tale. Iar dacă tot mai ai ceva timp liber nu rata pentru nimic în lume evenimentele sugerate. Sau poate vrei să faci voluntariat? Noi am selectat tot ce e mai bun pentru tine. Profită din plin.
+        - @ads.each do |ad|
+          .grid-col-3.grid-col__left.col-space__both
+            .add-content
+              = image_tag ad.company.logo, :class => 'ad-image'
+              .ad-title
+                %h4
+                  = link_to ad.title, advertisement_path(ad)
+              .ad-type
+                = ad.type
+
+  .dashboard-blog.row__padding
+    .container
+      .grid-col-12.grid-col__left.col-space__bottom
+        %h3.header-line
+          Ultimele articole de pe blog
+      .grid-col-12.grid-col__left#recent_blog_posts
+
+

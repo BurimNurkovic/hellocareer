@@ -1,0 +1,16 @@
+.company__form-login
+  .company__form-header
+    .grid-col-12.grid-col__left
+      %h3 Log in
+  .company__form-body
+    .grid-col-8.grid-col__left.form-email
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = f.email_field :email, :placeholder => "Email", autofocus: true, :class => "form-control"
+        = f.password_field :password, :placeholder => "Parola", autocomplete: "off", :class => "form-control"
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me
+        = f.submit "Log in", :class => "form-button"
+    .grid-col-8.grid-col__left.form-link
+      = render "companies/shared/links"

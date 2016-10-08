@@ -1,0 +1,47 @@
+.company__form-login {
+  max-width: 585px;
+  min-width: 200px;
+  margin: 100px auto 20px auto;
+  background: $white;
+
+  @include clearfix;
+
+  .company__form-header {
+    padding: 23px 20px;
+    background: darken($bk-grey, 20%);
+
+    @include clearfix;
+
+    h3 {
+      @include raleway(700, uppercase);
+      @include font(18, 24);
+      margin: 0;
+      color: $white;
+    }
+
+    @media (min-width: $break-tablet) {
+      padding: 23px 60px;
+
+      h3 {
+        @include raleway(700, uppercase);
+        @include font(21, 24);
+      }
+    }
+  }
+
+  .company__form-body {
+    padding: 20px;
+    background: $bk-grey;
+
+    @include clearfix;
+
+    .form-email, .form-link {
+      margin: 0 16.66666667%;
+      display: block;
+    }
+
+    @media (min-width: $break-tablet) {
+      padding: 60px;
+    }
+  }
+}

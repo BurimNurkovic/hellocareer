@@ -1,0 +1,52 @@
+
+- path = @question.new_record? ? admin_questions_path : admin_question_path(@question)
+
+= form_for @question,
+           :as => :question,
+           :url => path do |f|
+  .row
+    .col-xs-3
+      .form-group
+        .input-group
+          %span.input-group-addon Order
+          = f.text_field :order_nr, :class => 'form-control'
+
+      .form-group
+        .input-group
+          %span.input-group-addon Key
+          = f.text_field :key, :class => 'form-control', disabled: true
+
+      .form-group
+        = f.label :searchable
+        = f.check_box :searchable
+
+    .col-xs-9
+      .form-group
+        .input-group
+          %span.input-group-addon Builder Text
+          = f.text_field :builder_text, :placeholder => 'Builder Text', :class => 'form-control'
+      .form-group
+        .input-group
+          %span.input-group-addon Template Text
+          = f.text_field :template_text, :placeholder => 'Template Text', :class => 'form-control'
+
+  .row
+    .col-xs-12
+      .form-group
+        = f.text_area :tip_text, :placeholder => 'Tip Text', :class => 'form-control'
+
+      .form-group
+        %span{ 'data-toggle' => 'buttons' }
+          - Question::Base::TYPES.each do |item|
+            - checked = (@question.type.try(:demodulize) || 'Text') == item
+            = label_tag '', :class => "btn btn-default#{checked ? ' active' : ''} btn-xs" do
+              = item
+              = radio_button_tag 'question[type]', "Question::#{item}", checked
+      .form-group
+        = f.label 'Category:'
+        - select_opts = options_from_collection_for_select(Question::CATEGORIES, 'first', 'second', @question.category || params[:category])
+        = f.select :category, select_opts, :include_blank => true
+      .form-group
+        = f.text_area :special_data, :placeholder => 'Special Data (JSON)', :class => 'form-control'
+
+  = f.submit 'Save!', :class => 'btn btn-primary'

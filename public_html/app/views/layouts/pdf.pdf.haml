@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %meta{'content' => 'text/html', 'charset' => 'UTF-8', 'http-equiv' => 'Content-Type'}/
+    %title HelloCareer
+    = wicked_pdf_stylesheet_link_tag 'pdf/main'
+    = wicked_pdf_javascript_include_tag 'pdf/main'
+  %body
+    = yield

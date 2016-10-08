@@ -1,0 +1,16 @@
+.hc-content
+  .user__pass.row__padding
+    .container
+      .content__mid
+        %h2.header-line Schimba parola
+
+        .grid-col-12.grid-col__left
+          = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+            = devise_error_messages!
+            = f.hidden_field :reset_password_token
+            .field__group
+              = f.password_field :password, autofocus: true, autocomplete: "off", :placeholder => "Parola noua"
+            .field__group
+              = f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Confirma parola"
+            = f.submit "Change my password", :class => "link-button"
+          = render "users/shared/links"

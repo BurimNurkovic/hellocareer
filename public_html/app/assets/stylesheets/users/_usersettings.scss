@@ -1,0 +1,66 @@
+// User settings
+
+.user-edit {
+  &:nth-child(odd) {
+    background: $bk-white;
+  }
+
+  &:nth-child(even) {
+    background: $bk-grey;
+  }
+
+  .header-line {
+    @include raleway(700, uppercase);
+    @include font(22, 28);
+    color: $dark-grey;
+    margin: 0;
+
+    &::after {
+      border-color: $gradient-to;
+    }
+  }
+
+  .header {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    color: $dark-grey;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  .link-button {
+    border-color: $gradient-from;
+    background: $gradient-from;
+    color: $bk-white;
+
+    &.button--delete {
+      border-color: $mid-grey;
+      color: $dark-grey;
+      background: transparent;
+    }
+  }
+
+  img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: $break-tablet) {
+    .header-line {
+      @include font(32, 38);
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .header-line {
+      @include font(36, 42);
+    }
+
+    .header {
+      @include font(21, 28);
+    }
+  }
+}

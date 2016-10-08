@@ -1,0 +1,2 @@
+module Admin::TermsChaptersHelper
+end

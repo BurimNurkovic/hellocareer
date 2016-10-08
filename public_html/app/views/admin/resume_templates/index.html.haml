@@ -1,0 +1,25 @@
+
+.row
+  .col-xs-12
+    = link_to 'Add Resume Template', [:new, :admin, :resume_template], :class => 'btn btn-primary btn-block'
+
+    %br
+
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Id
+          %th Name
+          %th Path
+          %th Handler
+          %th Actions
+
+      %tbody
+        = content_tag_for 'tr', @resume_templates do |rt|
+          %td= rt.id
+          %td= rt.name
+          %td= rt.path
+          %td= rt.handler
+          %td
+            = link_to 'View', [:admin, rt], :class => 'btn btn-primary btn-xs'
+            = link_to 'Delete', [:admin, rt], :method => :delete, :class => 'btn btn-danger btn-xs', data: { confirm: t(:are_you_sure) }

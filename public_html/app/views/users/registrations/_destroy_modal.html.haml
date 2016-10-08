@@ -1,0 +1,8 @@
+.form-header
+  .grid-col-12.grid-col__left
+    %h3 Confirmare
+.form-body
+  .grid-col-12.grid-col__left.delete-confirm
+    %p Ești sigur că dorești ștergerea definitivă a contului?
+    %button.link-button.button--cancel Nu
+    = link_to "Da, șterge cont", registration_path(resource_name), :class => "link-button button--delete", method: :delete

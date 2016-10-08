@@ -1,0 +1,162 @@
+#cv-design {
+
+  width: 210mm;
+  font-family: $openSansRegular;
+
+    h1 {
+    font-size: 9mm;
+    font-weight: 700;
+    line-height: 8mm;
+    margin-bottom: 3mm !important;
+    font-family: $openSansBold;
+  }
+
+  h3 {
+    font-size: 5mm;
+    font-weight: 700;
+    line-height: 5mm;
+    margin-bottom: 5mm !important;
+    font-family: $openSansBold;
+  }
+
+  h4 {
+    font-size: 5mm;
+    font-weight: 700;
+    font-family: $openSansBold;
+    line-height: 6mm;
+    margin-bottom: 4mm !important;
+    text-transform: uppercase;
+    color: #545979;
+  }
+
+  h5 {
+    font-size: 4mm;
+    line-height: 5mm;
+    font-weight: 600;
+    font-family: $openSansSemibold;
+
+  }
+
+  h6 {
+    font-size: 4mm;
+    line-height: 5mm;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: $openSansRegular;
+  }
+
+  p, span{
+    font-size: 4mm;
+    font-weight: normal;
+    text-align: justify;
+    color: #090909;
+    font-family: $openSansRegular;
+    line-height: 5mm;
+
+    span {
+      color: #3a3a3a
+    }
+  }
+
+
+  .col-content {
+    margin-bottom: 6mm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .col-4 {
+    width: 35%;
+    height: 4mm;
+    img {
+      width: 100%;
+      height: auto;
+      float: right;
+      padding-top: 1mm;
+    }
+  }
+
+  .col-6 {
+    width: 65%;
+    height: auto;
+  }
+  
+  .col-4, .col-6 {
+    float: left;
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .color-blue {
+    background-color: #545979;
+    color: #fff !important;
+    margin-top: 0;
+    text-align: center;
+    padding: 5mm;
+  }
+
+  #personal-info {
+    padding: 5mm;
+    margin-bottom: 5mm;
+    height: auto;
+    background-color: #545979;
+    color: #fff;
+    text-align: center;
+  }
+
+  .color-blue h1 {
+    text-transform: uppercase;
+  }
+
+  .color-blue h3 {
+    color: #c0c2e2;
+  }
+
+  .color-blue p {
+    text-align: center;
+    color: #fff;
+  }
+
+
+  .grey-paragraph {
+    color: #3a3a3a
+  }
+
+  .content, .content-item {
+    padding-top: 6mm;
+  }
+  
+  .gutter-sizer {
+    width: 22px;
+  }
+
+  .content-item, .grid-sizer {
+    float: left;
+  }
+
+  .gutter-sizer {
+    width: 22px;
+  }
+
+  .content-item, .grid-sizer {
+    float: left;
+  }
+
+  .col-content{
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+
+
+

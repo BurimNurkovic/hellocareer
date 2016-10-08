@@ -1,0 +1,6 @@
+.hc-content
+  - @ads.each do |ad|
+    = link_to ad do
+      = ad.type
+      = image_tag ad.company.logo
+      = ad.title

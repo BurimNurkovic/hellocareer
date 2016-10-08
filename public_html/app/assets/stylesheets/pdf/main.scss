@@ -1,0 +1,67 @@
+@import 'pdf/base/glob';
+@import 'pdf/templates/glob';
+
+#cv-design, #cv-design2 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.25;
+  position: relative;
+  display: block;
+
+
+  h1, h2, h3, h4, h5, h6, p, span {
+    margin: 0;
+    padding: 0;
+  }
+  .main-format {
+    background: white;
+    display: block;
+  }
+
+  .content {
+    height: auto;
+
+    &:before {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  .col-content {
+    width: 100%;
+    display: table;
+
+    &:before, &:after {
+      display: table;
+      content: '';
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6, p, img{
+  -webkit-column-break-inside: avoid !important;
+  page-break-inside: avoid !important;
+  break-inside: avoid!important;
+}
+
+// .newpage {
+//   width: 21cm;
+//   height: 29.3cm;
+//   overflow: hidden;
+//   border-top: none;
+//   position: relative;
+// }
+
+body {
+  text-rendering: optimize-speed;
+  margin: 0 !important;
+}

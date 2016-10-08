@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{'content' => 'text/html', 'charset' => 'UTF-8', 'http-equiv' => 'Content-Type'}/
+    %title Previzualizare CV | Hello Career
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body{ :id => (content_for? :body_id) ? yield(:body_id) : nil }
+    = render :partial => 'layouts/navbar'
+    = yield
+
+    #modal
+      .modal-box
+        - unless user_signed_in?
+          #sign_up_form
+          #log_in_form
+
+    - flash.each do |type, msg|
+      .flash-message{:class => type}
+        .container
+          %p= msg
+
+    = render :partial => 'layouts/footer'

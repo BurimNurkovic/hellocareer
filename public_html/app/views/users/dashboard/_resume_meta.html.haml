@@ -1,0 +1,14 @@
+- @resumes.each do |r|
+  .grid-col-4.grid-col__left
+    .cv-preview
+      .cv-title
+        - title = r.try(:position).try(:pos_position_key).blank? ? 'Fără titlu' : r.try(:position).try(:pos_position_key)
+        = link_to title, r, :class => 'header-line resume-design-modal', remote: true
+      %ul.cv-meta
+        %li
+          = r.created_at.strftime("Creat: %d/%m/%Y")
+        %li
+          = "Vizualizări: #{views[r.id]}"
+    .cv__actions
+      = link_to 'Editează', [:edit, r], :class => 'link-button'
+      = link_to 'Șterge', r, :method => :delete, :class => 'link-button'

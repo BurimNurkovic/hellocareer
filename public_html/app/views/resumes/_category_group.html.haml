@@ -1,0 +1,5 @@
+%li
+  .resumes-questions--group
+    = render :partial => 'resumes/groupped_category',
+            :collection => categories,
+            :locals => { form: form }

@@ -1,0 +1,30 @@
+
+
+.row
+  .col-xs-12
+    .form-group
+      = link_to 'New Advertisement', new_companies_advertisement_path, :class => 'btn btn-primary'
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Title
+          %th Type
+          %th Domain
+          %th Visible
+          %th Deadline
+          %th Views
+          %th Company
+          %th Actions
+      %tbody
+        = content_tag_for(:tr, @ads) do |ad|
+          %td= ad.title
+          %td= ad.type
+          %td= ad.domain
+          %td= ad.visible?
+          %td= ad.deadline
+          %td= ad.views
+          %td= ad.company.name
+          %td
+            = link_to 'View', [:admin, ad], :class => 'btn btn-success btn-xs'
+            = link_to 'Delete', [:admin, ad], :class => 'btn btn-danger btn-xs', :method => :delete, data: { confirm: t(:are_you_sure) }
+

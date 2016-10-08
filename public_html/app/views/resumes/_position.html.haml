@@ -1,0 +1,10 @@
+- f = locals[:form_builder]
+- q = Question::Base.where(:category => 'position')
+= q[0].builder_text
+= f.select :domain, q[0].special_data, include_blank: true
+%br
+= q[1].builder_text
+= f.text_field :position
+%br
+= q[2].builder_text
+= f.select :apply_at, q[2].special_data, include_blank: true

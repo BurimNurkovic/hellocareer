@@ -1,0 +1,27 @@
+
+
+.row
+  .col-xs-12
+
+    = form_for :search_query, :url => [:search, :admin, :resumes], :method => :get do |f|
+      - @questions.each do |q|
+        = render q, :locals => {:form_builder => f}
+        %br
+      = f.submit 'Search', :class => 'btn btn-primary'
+
+    %hr
+
+.row
+  .col-xs-12
+    %table.table.table-striped
+      %thead
+        %tr
+          %th ID
+          %th Author
+          %th Actions
+      %tbody
+        = content_tag_for(:tr, @resumes) do |r|
+          %td= r.id
+          %td= r.user.try(:email)
+          %td
+            = link_to 'View', [:admin, r], :class => 'btn btn-primary btn-xs'

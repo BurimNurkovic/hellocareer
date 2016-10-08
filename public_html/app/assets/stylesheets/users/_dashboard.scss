@@ -1,0 +1,400 @@
+// Dashboard
+
+.dashboard-msg {
+  position: relative;
+
+  .header-line {
+    margin: 0 0 30px 0;
+    font: 700 36px/40px $raleway;
+    color: $dark-grey;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      border-color: $gradient-to;
+      left: 50%;
+      margin: 0 0 0 -25px;
+    }
+  }
+
+  p {
+    margin: 0 0 30px 0;
+    text-align: center;
+    font: 400 16px/21px $roboto;
+    color: $dark-grey;
+    display: block;
+    position: relative;
+  }
+
+  .link-button {
+    color: $gradient-to;
+    border-color: $gradient-to;
+    margin: 0 auto;
+    display: table;
+    text-transform: uppercase;
+  }
+}
+
+.dashboard-tools {
+  background: $gradient-from;
+
+  .tool-counter {
+    margin-bottom: 20px;
+
+    h3 {
+      @include lato(400, none);
+      @include font(48, 56);
+      color: $bk-white;
+      margin: 0;
+    }
+  }
+
+  .tool-name {
+    cursor: pointer;
+    display: inline-block;
+
+    p {
+      @include raleway(700, uppercase);
+      @include font(18, 20);
+      color: $bk-white;
+      margin: 0;
+      float: left;
+    }
+
+    &:after {
+      content: '';
+      background-image: image-url('arrow.png');
+      background-repeat: no-repeat;
+      height: 10px;
+      width: 20px;
+      margin-left: 20px;
+      margin-top: 5px;
+      float: left;
+    }
+  }
+}
+
+.dashboard-content {
+  position: relative;
+  background: $bk-grey;
+
+  .cv-empty {
+    text-align: center;
+    color: $dark-grey;
+
+    h3 {
+      @include raleway(700, uppercase);
+      @include font(21, 28);
+      margin-top: 0;
+    }
+
+    .link-button {
+      margin-top: 20px;
+      background: $gradient-from;
+      border-color: $gradient-from;
+      color: $bk-white;
+    }
+  }
+
+  .cv-preview {
+    background-color: $bk-white;
+    width: 160px;
+    height: 230px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+
+    .cv-title {
+      a {
+        @include raleway(700, none);
+        @include font(18, 22);
+        color: $dark-grey;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+
+        &:after {
+          border-color: $gradient-to;
+          left: 50%;
+          margin: 0 0 0 -25px;
+        }
+      }
+    }
+
+    .cv-meta {
+      @include lato(400, none);
+      @include font(14, 18);
+      color: $dark-grey;
+      margin: 0;
+
+      li {
+        list-style: none;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+    }
+  }
+
+  .cv__actions {
+    text-align: center;
+    padding-top: 20px;
+
+    .link-button {
+      border-color: $mid-grey;
+      color: $dark-grey;
+      display: inline-block;
+      margin-left: 20px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+
+.dashboard-ads {
+  background: $white;
+
+  .header-line {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    color: $dark-grey;
+
+    &::after {
+      border-color: $gradient-to;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    .header-line {
+      @include font(22, 28);
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    .header-line {
+      @include font(24, 30);
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .header-line {
+      @include font(28, 34);
+    }
+  }
+
+  .add-content {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    padding-top: 60px;
+    background: $bk-grey;
+
+    .ad-title {
+      text-align: center;
+      padding: 20px;
+
+      h4 {
+        margin: 0;
+        max-height: 71px;
+        height: 71px;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block; /* Fallback for non-webkit */
+        display: -webkit-box;
+      }
+
+      @include clearfix;
+
+      a {
+        color: $dark-grey;
+      }
+    }
+
+    .ad-type {
+      text-align: center;
+      font-weight: 700;
+      color: $gradient-from;
+      padding: 10px 0;
+      background: #e2e2e2;
+    }
+
+    .ad-image {
+      height: 120px;
+      width: auto;
+      margin: 0 auto;
+      padding: 10px;
+      top: 0;
+      left: 50%;
+      margin-left: -60px;
+      border: 2px solid $bk-grey;
+      position: absolute;
+      background: white;
+    }
+  }
+
+  .about__member-info {
+    text-align: center;
+    padding: 20px 0;
+    height: 140px;
+
+    h4 {
+      @include raleway(700, uppercase);
+      @include font(14, 20);
+      color: $dark-grey;
+      margin: 0 0 20px 0;
+    }
+
+    p {
+      @include font(14, 20);
+      color: $gradient-from;
+      margin: 0;
+    }
+
+    @media (min-width: $break-tablet) {
+      padding: 30px 0;
+      height: 160px;
+
+      h4 {
+        @include font(16, 20);
+      }
+
+      p {
+        @include font(16, 20);
+      }
+    }
+
+    @media (min-width: $break-desktop) {
+      height: 120px
+    }
+
+    @media (min-width: $break-large) {
+      h4 {
+        @include font(18, 20);
+      }
+    }
+  }
+}
+
+
+.dashboard-blog {
+  background: $bk-grey;
+
+  .header-line {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    color: $dark-grey;
+
+    &::after {
+      border-color: $gradient-to;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    .header-line {
+      @include font(22, 28);
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    .header-line {
+      @include font(24, 30);
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .header-line {
+      @include font(28, 34);
+    }
+  }
+
+  #recent_blog_posts {
+    ul {
+      margin: 0;
+
+      li {
+        list-style: none;
+        margin-bottom: 20px;
+      }
+    }
+
+    .blog-title {
+      @include raleway(700, uppercase);
+      margin-top: 0;
+      color: #757575;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      cursor: pointer;
+    }
+
+  }
+
+  .about__member-info {
+    text-align: center;
+    padding: 20px 0;
+    height: 140px;
+
+    h4 {
+      @include raleway(700, uppercase);
+      @include font(14, 20);
+      color: $dark-grey;
+      margin: 0 0 20px 0;
+    }
+
+    p {
+      @include font(14, 20);
+      color: $gradient-from;
+      margin: 0;
+    }
+
+    @media (min-width: $break-tablet) {
+      padding: 30px 0;
+      height: 160px;
+
+      h4 {
+        @include font(16, 20);
+      }
+
+      p {
+        @include font(16, 20);
+      }
+    }
+
+    @media (min-width: $break-desktop) {
+      height: 120px
+    }
+
+    @media (min-width: $break-large) {
+      h4 {
+        @include font(18, 20);
+      }
+    }
+  }
+}
+
+.cv-template {
+  @include clearfix;
+
+  h4 {
+    @include raleway(700, uppercase);
+    text-align: center;
+    color: $dark-grey;
+    margin: 20px 0;
+  }
+}
+
+.content-box {
+  display: none;
+
+  &.open-box {
+    display: block;
+  }
+}

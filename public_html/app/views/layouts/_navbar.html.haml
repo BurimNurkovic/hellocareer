@@ -1,0 +1,35 @@
+%header#top.navbar.navbar-fixed
+  .container
+    .navbar-logo
+      = link_to 'Hello Career', root_path, :title => 'Hello Career'
+    %button.navbar-toggle
+    %button.navbar-toggle__account
+      - if user_signed_in?
+        .nav-pointer
+      - else
+        - is_remote_action = [new_resume_path, preview_resumes_path].include? request.env['PATH_INFO']
+        - url_params = { :devise_remote => is_remote_action }
+        = link_to 'Intra in cont', new_user_session_path(url_params), :remote => true, :class => 'sign-in-btn'
+    %nav
+      %ul.navbar-nav
+        %li
+          = link_to 'Creează CV', new_resume_path
+        %li
+          = link_to 'Despre Noi', about_path
+        %li
+          = link_to 'Blog', 'http://blog.hellocareer.md'
+    .navbar-account
+      = render :partial => 'layouts/navbar_account'
+
+.menu-dropdown
+  = render :partial => 'layouts/header_dropdown'
+
+#navbar-modal
+  %ul
+    %li
+      = link_to 'Creează CV', new_resume_path
+    %li
+      = link_to 'Despre Noi', about_path
+    %li
+      = link_to 'Blog', 'http://blog.hellocareer.md'
+

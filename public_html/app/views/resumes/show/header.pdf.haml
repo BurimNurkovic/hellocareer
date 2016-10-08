@@ -1,0 +1,10 @@
+#cv-design2 
+  .content.color-gray
+    - unless @resume.try(:short_description).try(:about_surname_key).blank? && @resume.try(:short_description).try(:about_name_key).blank?
+      %h1
+        = @resume.try(:short_description).try(:about_surname_key)
+        = @resume.try(:short_description).try(:about_name_key)
+
+    - unless @resume.try(:position).try(:pos_position_key).blank?
+      %h3
+        = @resume.try(:position).try(:pos_position_key)

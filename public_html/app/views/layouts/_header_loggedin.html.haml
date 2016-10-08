@@ -1,0 +1,7 @@
+
+.nav-link.nav-pointer
+  .nav-pic
+    = image_tag current_user.avatar if current_user.avatar
+  .nav-name
+    %span= current_user.full_name.blank? ? current_user.email : current_user.full_name
+  .nav-arrow

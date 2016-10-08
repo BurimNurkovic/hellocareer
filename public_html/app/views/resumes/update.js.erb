@@ -1,0 +1,36 @@
+
+var relation_ids = JSON.parse('<%= raw @resume.get_relation_ids.to_json %>')
+
+$.each(relation_ids, function (relation, ids) {
+  $('#'+ relation +'.cat-fields fieldset>input').each(function () {
+    var found_id = $(this).val()
+    var idx = ids.indexOf(found_id)
+    if (idx > -1) {
+      ids.splice(idx, 1)
+    }
+  })
+
+  $('#'+ relation +'.cat-fields fieldset').each(function (order_id) {
+    var fieldset = $(this)
+
+    if (fieldset.children('input').length == 0 && fieldset.prev('input').length == 0) {
+      var hf = '<input type="hidden" value="'
+      hf += ids.splice(0, 1)
+      hf += '" name="resume['
+      hf += relation
+      hf += '_attributes]['
+      hf += order_id
+      hf += '][id]" id="resume_'
+      hf += relation
+      hf += '_attributes_'
+      hf += order_id
+      hf += '_id">'
+
+      fieldset.append($(hf))
+    }
+  })
+})
+
+$('#flash-messages').html('<%= j render(partial: "layouts/flash_messages") %>')
+setTimeout(function() { $('.flash-message').fadeOut('fast'); }, 1500)
+

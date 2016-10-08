@@ -1,0 +1,6 @@
+%ul.nav.navbar-nav.side-nav
+  %li{:class => active_path(edit_company_registration_path)}
+    = link_to 'Company Profile', edit_company_registration_path
+  - %w( resumes advertisements ).each do |page|
+    %li{:class => active_path(send("companies_#{page}_path"))}
+      = link_to page.titleize, send("companies_#{page}_path")

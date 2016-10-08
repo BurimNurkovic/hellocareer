@@ -1,0 +1,156 @@
+.hc-footer {
+  background: $dark-grey;
+  min-width: 320px;
+  width: 100%;
+
+  @include clearfix;
+
+  .header-line {
+    @include raleway(700, uppercase);
+    @include font(16, 22);
+    color: $white;
+
+    &::after {
+      border-color: $gradient-to;
+    }
+  }
+
+  p {
+    color: $white;
+  }
+
+  .field__group input:not([type=submit]) {
+    background-color: lighten($dark-grey, 20%) !important;
+    border-color: $bk-white !important;
+    color: $bk-white;
+  }
+
+  .link-button {
+    background: $bk-white;
+    color: $gradient-to;
+    border-color: $bk-white;
+  }
+
+  @media (min-width: $break-large) {
+    .header-line {
+      @include font(21, 28);
+    }
+  }
+
+  .footer__newsletter {
+    margin-top: 20px;
+
+    #subscripiton_result {
+      color: $white;
+      @include lato(400, none);
+      @include font(14, 20);
+    }
+
+    @media (min-width: $break-tablet) {
+      margin-top: 0;
+    }
+
+    @media (max-width: $break-desktop - 1) {
+      .newsletter-submit {
+        margin-top: 15px;
+      }
+
+      .newsletter-input {
+        width: 100%;
+      }
+    }
+  }
+
+  .footer__email {
+    display: block;
+    @include clearfix;
+
+    a {
+      @include lato(400, none);
+      @include font(14, 20);
+      color: $bk-white;
+    }
+
+    @media (min-width: $break-tablet) {
+      a {
+        @include font(16, 24);
+      }
+    }
+  }
+
+  .footer__social {
+    ul {
+      margin: 20px 0 0 0;
+      padding: 0;
+
+      @include clearfix;
+    }
+
+
+    li {
+      float: left;
+      list-style: none;
+      padding-right: 20px;
+    }
+
+    li a {
+      width: 40px;
+      height: 40px;
+      display: block;
+      text-indent: -9999px;
+      background-image: image-url('sprite.png');
+    }
+
+    .fb-link a {
+      background-position: 0 0;
+    }
+
+    .youtube-link a {
+      background-position: -40px 0;
+    }
+
+    .pinterest-link a {
+      background-position: -80px 0;
+    }
+  }
+
+  .footer__content {
+    margin-top: 20px;
+    padding-top: 40px;
+    width: 100%;
+    @include lato(400, none);
+    @include font(14, 20);
+    text-align: center;
+
+    a {
+      color: $white;
+    }
+
+    .footer__terms, .footer__copy, .footer__made-by {
+      color: $white;
+      margin-bottom: 15px;
+    }
+
+    @media (min-width: $break-tablet) {
+      .footer__terms, .footer__copy, .footer__made-by {
+        margin-bottom: 0;
+      }
+
+      .footer__copy {
+        text-align: left;
+      }
+
+      .footer__made-by {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.footer__gradient {
+  height: 15px;
+  width: 100%;
+  display: block;
+  position: relative;
+  @include gradient;
+}

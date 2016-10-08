@@ -1,0 +1,43 @@
+- facebook_share_options :url => 'http://hellocareer.md/resumes/new'
+- content_for :title, 'Creează CV | Hello Career'
+
+
+.hc-content#resume__new
+  = render :partial => 'resumes/new_nav'
+  .resume-content.form
+    = form_for @resume do |f|
+      %ul.resume-slider
+
+        - Question::SINGULAR_CATEGORIES.each do |cat_key, cat_name|
+          %li
+            .resumes-questions
+              .container
+                - if @questions[cat_key]
+                  = f.fields_for "#{cat_key}" do |ff|
+                    = render @questions[cat_key], as: 'question', locals: { form_builder: ff }
+                    / = render cat_key, locals: { form_builder: ff  }
+
+
+
+
+
+        = category_group f, 'Povestește-ne despre experiența ta de lucru', %w(job internship volunteering)
+
+        = category f, 'language_competence'
+
+        = category_group f, 'Avantajele tale', %w(professional_competence personal_efficiency)
+
+        = category_group f, 'Educație', %w(professional_school college bachelor master doctorate competition)
+
+        = category f, 'course'
+
+        = category f, 'qualification'
+
+        = category f, 'hobby'
+
+      .resume-submit
+        .container
+          .grid-col-9.grid-col__left
+            = f.submit 'Salvează', :class => 'link-button'
+          .grid-col-3.grid-col__right
+            .resume-next.grid-col__right.link-button Următoarea

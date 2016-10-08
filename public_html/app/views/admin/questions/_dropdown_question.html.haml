@@ -1,0 +1,9 @@
+.row.form-group
+  .col-xs-5
+    %label
+      = dropdown_question.builder_text
+  .col-xs-7
+    - f = locals[:form_builder]
+    = f.select dropdown_question.key, dropdown_question.special_data, include_blank: true
+
+

@@ -1,0 +1,22 @@
+- f = locals[:form_builder]
+- q = Question::Base.where(:category => 'short_description').pluck(:builder_text)
+= q[0]
+= f.text_field :first_name
+%br
+= q[1]
+= f.text_field :last_name
+%br
+= q[2]
+= f.text_field :email
+%br
+= q[3]
+= f.text_field :address
+%br
+= q[4]
+= f.text_field :phone
+%br
+= q[5]
+= f.text_field :blog
+%br
+= q[6]
+= f.text_area :summary

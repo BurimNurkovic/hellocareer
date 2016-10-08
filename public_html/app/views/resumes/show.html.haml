@@ -1,0 +1,45 @@
+.hc-content
+= link_to resume_path(@resume, template_id: 'default') do
+  Default
+  = image_tag 'arstartsart'
+
+- if user_signed_in?
+
+  - @templates.each do |rt|
+    = link_to resume_path(@resume, :format => :pdf, template_id: rt[0]) do
+      = rt[1]['name']
+      / = image_tag rt.image
+
+
+/ .hc-content
+/   - if user_signed_in?
+/     %p
+/       Views: 
+/       %strong= @resume.views_count
+/     .preview__nav.row__padding
+/       .container
+/         .grid-col-6.grid-col__left
+/           = link_to 'Salvează PDF', resume_path(@resume, :format => :pdf, template_id: template_id), :class => "link-button", :target => "_blank"
+/           / = link_to 'Imprimă', resume_path(@resume, :format => :pdf, template_id: template_id), :class => "link-button"
+/           = link_to 'Editează', edit_resume_path(@resume), :class => "link-button"
+/         .grid-col-6.grid-col__left
+/           .preview__other-cv
+/             - current_user.resumes.each do |r|
+/               = link_to (r.try(:position).try(:pos_position_key) || 'Fără titlu'), r, :class => "link-button preview__other"
+
+/   .preview__background
+/     .container
+/       .preview__content.row__padding.border__bottom
+/         .grid-col-9.grid-col__left
+/           = render template: "resumes/show/#{template_id}"
+/         .grid-col-3.grid-col__left
+/           / = link_to resume_path(@resume, template_id: 'default') do
+/           /   Default
+/           /   = image_tag 'arstartsart'
+
+/           / - if user_signed_in?
+
+/           /   - @templates.each do |rt|
+/           /     = link_to resume_path(@resume, template_id: rt.id) do
+/           /       = rt.name
+/           /       = image_tag rt.image

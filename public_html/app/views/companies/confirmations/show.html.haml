@@ -1,0 +1,16 @@
+.hc-content
+  .user__pass.row__padding
+    .container
+      .content__mid
+      %h2.header-line You're almost done! Now create a password to securely access your account.
+      %p
+      .grid-col-12.grid-col__left
+        = form_for(resource, :as => resource_name, :url => confirm_path) do |f|
+          = devise_error_messages!
+          .field__group
+            = f.password_field :password, :input_html => {:autofocus => true}, :placeholder => "Password"
+          .field__group
+            = f.password_field :password_confirmation, :placeholder => "Password Confirmation"
+          = f.hidden_field :confirmation_token, :value => @original_token
+
+          = f.submit :class => "link-button"

@@ -1,0 +1,13 @@
+- if user_signed_in?
+  .form-header
+    .grid-col-6.grid-col__left
+      %h3 Selectează un template
+  .form-body
+
+    - @templates.each do |rt|
+      .grid-col-4.grid-col__left.col-space__both
+        = link_to resume_path(@resume, :format => :pdf, template_id: rt[0]), :class => 'cv-template', target: '_blank' do
+          = image_tag asset_path(rt[1]['thumb'])
+          %h4
+            = rt[1]['name']
+          = rt[1]['description']

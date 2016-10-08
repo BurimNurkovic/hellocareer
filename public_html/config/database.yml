@@ -1,0 +1,22 @@
+default: &default
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: hello-career_development
+  username: alpha
+  password: alphapassword
+
+test:
+  <<: *default
+  database: hello-career_test
+  username:
+  password:
+
+production:
+  <<: *default
+  database: hello-career_production

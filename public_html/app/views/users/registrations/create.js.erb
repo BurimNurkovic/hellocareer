@@ -1,0 +1,29 @@
+
+<% if resource.errors.any? %>
+  var form = $('#sign_up_form form')
+  form.addClass('has-errors')
+
+  var errors_div = $('.errors')
+  errors_div.html('')
+  <% resource.errors.full_messages.each do |msg| %>
+    errors_div.append('<li><%= msg %></li>')
+  <% end %>
+
+<% else %>
+  var account_data = '<%=j (render(partial: "layouts/navbar_account")) %>';
+  var dropdown_data = '<%=j (render(partial: "layouts/header_dropdown")) %>';
+
+  $('.navbar-account').html(account_data);
+  $('.menu-dropdown').html(dropdown_data);
+
+  var save_cv = $('.save-cv-buttons')
+
+  if (save_cv) {
+    var buttons_html = '<%=j (render(partial: "resumes/save_cv_buttons")) %>';
+    save_cv.html(buttons_html)
+    $('form.new_resume').attr('action', '<%= resumes_path %>')
+  }
+
+  $('#modal').remove();
+<% end %>
+

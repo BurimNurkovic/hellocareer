@@ -1,0 +1,17 @@
+- q = number_question
+
+.question-content
+  .grid-col-5.grid-col__left.col-space__right
+    %label
+      = q.builder_text
+    - unless q.tip_text.blank?
+      .question-tip
+        .open__button
+        .tip__text
+          %p
+            = unescape_newline q.tip_text
+  .grid-col-7.grid-col__left
+    - f = locals[:form_builder]
+    = locals[:form_builder].number_field q.key, :class => 'input-text'
+
+

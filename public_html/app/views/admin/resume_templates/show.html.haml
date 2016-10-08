@@ -1,0 +1,16 @@
+
+
+.row
+  .col-xs-12
+    %p= @resume_template.id
+    %p= @resume_template.name
+    %p= @resume_template.description
+    = image_tag @resume_template.image
+    %p= @resume_template.path
+    %p= @resume_template.handler
+
+    %h3 Template for HTML
+    %pre= @resume_template.body_for_html
+
+    %h3 Template for PDF
+    %pre= @resume_template.body_for_pdf

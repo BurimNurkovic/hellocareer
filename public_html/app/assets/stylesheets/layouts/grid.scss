@@ -1,0 +1,204 @@
+// Container
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include clearfix;
+}
+
+.grid-row {
+  @include clearfix;
+}
+
+.grid-col_align-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.col-text_center {
+  text-align: center;
+}
+
+@media (min-width: $break-tablet) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: $break-desktop) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: $break-large) {
+  .container {
+    width: 1170px;
+  }
+}
+
+// Content mid
+
+.content__mid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: $break-tablet) {
+  .content__mid {
+    padding-left: 16.66666667%;
+    padding-right: 16.66666667%;
+  }
+}
+
+// Padding 40px (Top, Bottom)
+
+.row__padding {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: block;
+}
+
+@media (min-width: $break-tablet) {
+  .row__padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.grid-col-3 {
+  width: 50%;
+  position: relative;
+}
+
+
+.grid-col-2 {
+  width: 16.66666667%;
+  position: relative;
+}
+
+.grid-col-8 {
+  width: 66.66666666666667%;
+  position: relative;
+}
+
+.grid-col-5, .grid-col-4, .grid-col-6, .grid-col-7, .grid-col-12 {
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: $break-tablet) {
+
+  .grid-col-1 {
+    width: 8.33333333%;
+    position: relative;
+  }
+
+  .grid-col-2 {
+    width: 16.66666667%;
+    position: relative;
+  }
+
+  .grid-col-3 {
+    width: 25%;
+    position: relative;
+  }
+
+  .grid-col-4 {
+    width: 33.3333333333333%;
+    position: relative;
+  }
+
+  .grid-col-5 {
+    width: 41.66666667%;
+    position: relative;
+  }
+
+  .grid-col-6 {
+    width: 50%;
+    position: relative;
+  }
+
+  .grid-col-7 {
+    width: 58.33333333%;
+    position: relative;
+  }
+
+  .grid-col-8 {
+    width: 66.66666666666667%;
+    position: relative;
+  }
+
+  .grid-col-9 {
+    width: 75%;
+    position: relative;
+  }
+
+  .grid-col-10 {
+    width: 83.33333333%;
+    position: relative;
+  }
+
+  .grid-col-11 {
+    width: 91.66666667%;
+    position: relative;
+  }
+
+  .grid-col-12 {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.grid-col__left {
+  float: left;
+}
+
+.grid-col__right {
+  float: right;
+}
+
+.grid-col__center {
+  margin: 0 auto;
+
+  @include clearfix;
+}
+
+.col-space__right {
+  padding-right: 0;
+}
+
+.col-space__left {
+  padding-left: 0;
+}
+
+.col-space__bottom {
+  padding-bottom: 10px;
+}
+
+.col-space__both {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+@media (min-width: $break-tablet) {
+  .col-space__right {
+    padding-right: 30px;
+  }
+
+  .col-space__left {
+    padding-left: 30px;
+  }
+
+  .col-space__bottom {
+    padding-bottom: 30px;
+  }
+
+  .col-space__both {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}

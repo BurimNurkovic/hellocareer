@@ -1,0 +1,110 @@
+- facebook_share_options :url => 'http://hellocareer.md'
+- content_for :title, 'Hello Career - Primul tău CV profesional'
+
+- content_for :body_id, 'home-index'
+
+- slide1 = @content_boxes['slide1']
+- slide2 = @content_boxes['slide2']
+- home_benefits = @content_boxes['home_benefits']
+- home_testimonials = @content_boxes['home_testimonials']
+- home_how = @content_boxes['home_how']
+- home_how_1 = @content_boxes['home_how_1']
+- home_how_2 = @content_boxes['home_how_2']
+- home_how_3 = @content_boxes['home_how_3']
+- home_calltoaction = @content_boxes['home_calltoaction']
+- home_partners = @content_boxes['home_partners']
+
+.hc-masthead#content{:style => "background-image: url('#{slide1.image}');"}
+  .container
+    .hc-center
+      .grid-col-6.grid-col__left
+        %h1.header-line= slide1.try(:title)
+      .grid-col-7.grid-col__left
+        = raw slide1.try(:body)
+      - if user_signed_in?
+        .grid-col-12.grid-col__left.call-to-action
+          = link_to 'Creează CV', new_resume_path, :title => 'CV Builder', :class => 'link-button'
+
+.hc-content-home
+  - unless @benefits.empty?
+    .home-benefits.row__padding
+      .container
+        .grid-col-6.grid-col__left.col-space__right.benefits-main
+          %h3.header-line= home_benefits.try(:title)
+          = raw home_benefits.try(:body)
+        .grid-col-6.grid-col__left.col-space__left
+          %ul
+            - @benefits.each do |b|
+              %li
+                %h4= b.title
+                %p= b.body
+
+  .home-slide2{:style => "background-image: url('#{slide2.image}');"}
+    .container
+      .grid-col-6.grid-col__left
+        %h1.header= slide2.try(:title)
+      .grid-col-7.grid-col__left
+        = raw slide2.try(:body)
+
+  .home-how-it-works.row__padding
+    .container
+      .grid-col-12.grid-col__left
+        %h3.header-line= home_how.try(:title)
+        = raw home_how.try(:body)
+        = image_tag home_how.image
+      .grid-col-4.grid-col__left.col-space__both.how
+        %h4.header= home_how_1.try(:title)
+        = raw home_how_1.try(:body)
+      .grid-col-4.grid-col__left.col-space__both.how
+        %h4.header= home_how_2.try(:title)
+        = raw home_how_2.try(:body)
+      .grid-col-4.grid-col__left.col-space__both.how
+        %h4.header= home_how_3.try(:title)
+        = raw home_how_3.try(:body)
+      - if user_signed_in?
+        .grid-col-12.grid-col__left
+          = link_to 'Creează CV', new_resume_path, :title => 'CV Builder', :class => 'link-button'
+
+
+  - unless @testimonials.empty?
+    .home-testimonials.row__padding
+      .container
+        .grid-col-12.grid-col__left.col-space__bottom
+          %h3.header-line= home_testimonials.try(:title)
+          = raw home_testimonials.try(:body)
+        .testimonials-block
+          .grid-col-2.grid-col__left.carousel-btn__height
+            .carousel-prev
+          .grid-col-8.grid-col__left
+            #testimonials-slider
+              - @testimonials.each do |t|
+                .carousel-item.grid-col__left
+                  .testimonial-picture
+                    = image_tag t.picture
+                  .testimonial-author
+                    %h4= t.author
+                  .testimonial-content
+                    = raw t.text
+          .grid-col-2.grid-col__left.carousel-btn__height
+            .carousel-next
+
+  .home-call-to-action.row__padding
+    .container
+      .grid-col-7.grid-col__left
+        %h3.header= home_calltoaction.try(:title)
+        =  raw home_calltoaction.try(:body)
+      .grid-col-4.grid-col__right
+        = link_to 'Creează CV', new_resume_path, :title => 'CV Builder', :class => 'link-button'
+
+  - unless @partners.empty?
+    .home-partners.row__padding
+      .container
+        .grid-col-12.grid-col__left.col-space__bottom
+          %h3.header-line= home_partners.try(:title)
+          = raw home_partners.try(:body)
+
+        .partners-list.grid-col__left
+          - @partners.each do |p|
+            .grid-col-3.grid-col__left.partner-single
+              .img-align__middle
+                = image_tag p.logo

@@ -1,0 +1,19 @@
+
+- cat_key = groupped_category
+- cat_name = Question::PLURAL_CATEGORIES[cat_key]
+.resumes-cat--group
+  .container
+    .grid-col-12.grid-col--left
+      %h3= cat_name
+- if @questions[cat_key]
+  .cat-fields{id: cat_key.pluralize}
+    = form.nested_fields_for cat_key.pluralize, :class_name => "Answer::#{cat_key.camelize}" do |ff|
+      .container
+
+
+        = render @questions[cat_key], as: 'question', locals: { form_builder: ff }
+
+
+        = ff.remove_nested_fields_link "Șterge #{cat_name}", :class => 'remove-fields remove-item'
+  .container
+    = form.add_nested_fields_link cat_key.pluralize, "Adaugă #{cat_name}", :class => 'add-fields add-item'

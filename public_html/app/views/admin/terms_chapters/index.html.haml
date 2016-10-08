@@ -1,0 +1,48 @@
+.row
+  .col-lg-12
+    %h3.page-header Add Terms & Conditions Chapter
+
+.row
+  = form_for [:admin, @terms_chapter] do |f|
+
+    .col-md-8.col-lg-9
+      .form-group
+        = f.label :title
+        = f.text_field :title, :class => "form-control"
+      .form-group
+        = f.label :body
+        = f.cktext_area :body, :class => "form-control"
+    .col-md-4.col-lg-3
+      .panel.panel-default
+        .panel-heading Publish
+        .panel-body
+          .form-group
+            = f.label 'Chapter Number'
+            = f.number_field :chapter_nr, :class => "form-control"
+        .panel-footer
+          .text-right
+            = f.submit :class => "btn btn-primary"
+
+.row
+  .col-lg-12
+    %h3.page-header All Terms & Conditions Chapters
+  .col-lg-12
+    .table-responsive
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th ID
+            %th Number
+            %th Title
+            %th Actions
+
+        %tbody
+          - @terms_chapteres.each do |terms_chapter|
+            %tr
+              %td= terms_chapter.id
+              %td= terms_chapter.chapter_nr
+              %td= terms_chapter.title
+              %td
+                .btn-group
+                  = link_to 'Edit', [:edit, :admin, terms_chapter], :class => "btn btn-default"
+                  = link_to 'Delete', [:admin, terms_chapter], :method => :delete, :class => "btn btn-danger", data: { confirm: t(:are_you_sure) }

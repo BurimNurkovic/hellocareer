@@ -1,0 +1,63 @@
+.row
+  .col-lg-12
+    %h3.page-header Setări cont
+
+.row
+  .col-lg-12
+
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Info
+      = form_for(resource, as: resource_name, url: companies_profile_path, html: { method: :put }) do |f|
+        .panel-body
+          .form-group
+            = f.label :name, 'Nume Companie'
+            = f.text_field :name, :class => 'form-control'
+          .form-group
+            = f.label :logo, 'Logo'
+            - if resource.logo.present?
+              %br
+              .img-thumbnail
+                = image_tag resource.logo, :width => "200"
+          .form-group
+            = f.file_field :logo
+
+          .form-group
+            = f.label :remove_logo, 'Elimină imaginea'
+            = f.check_box :remove_logo
+        .panel-footer
+          .text-right
+            = f.submit "Actualizează", :class => "btn btn-primary"
+
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Configurarea contului
+      = form_for(resource, as: resource_name, url: company_registration_path(resource_name), html: { method: :put }) do |f|
+        .panel-body
+          = devise_error_messages!
+          .form-group
+            = f.label :email, 'Email'
+            = f.email_field :email, :class => 'form-control'
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              %div
+                Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .form-group
+            = f.label :password, 'Parola nouă'
+            = f.password_field :password, autocomplete: "off", :class => 'form-control'
+          .form-group
+            = f.label :password_confirmation, 'Reintrodu parola'
+            = f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control'
+          .form-group
+            = f.label :current_password, 'Parola actuală'
+            = f.password_field :current_password, autocomplete: "off", :placeholder => "pentru orice modificări introdu parola actuală", :class => 'form-control'
+        .panel-footer
+          .text-right
+            = f.submit "Actualizează", :class => "btn btn-primary"
+
+  / .user-edit.row__padding
+  /   .container
+  /     .content__mid
+  /       %h3.header Anularea Contului
+  /       .grid-col-12.grid-col__left
+  /         %p Hey, să știi că poți să-ți anulezi contul oricând. Odată șters însă, acesta nu mai poate fi restabilit.
+  /       = link_to "Șterge cont", registration_path(resource_name), :class => "link-button button--delete", method: :delete, remote: true

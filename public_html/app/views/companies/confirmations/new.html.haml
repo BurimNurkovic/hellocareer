@@ -1,0 +1,14 @@
+.hc-content
+  .user__pass.row__padding
+    .container
+      .content__mid
+        %h2.header-line Resend confirmation instructions
+        %p
+        .grid-col-12.grid-col__left
+          = form_for(resource, as: resource_name, url: company_confirmation_path(resource_name), html: { method: :post }) do |f|
+            = devise_error_messages!
+            .field__group
+              = f.email_field :email, autofocus: true, :placeholder => "Email"
+            = f.submit "Resend confirmation instructions", :class => "link-button"
+          = render "companies/shared/links"
+
